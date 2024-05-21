@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena, setasLaterais} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena } from "../funcoesAuxiliares.js";
 
 export default class CenaPulpito extends Phaser.Scene{
     constructor(){
