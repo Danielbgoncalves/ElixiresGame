@@ -84,6 +84,8 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('diario-2', 'Assets/cenaEspelho/diario-2.png');
         this.load.image('diario-3', 'Assets/cenaEspelho/diario-3.png');
         this.load.image('diario-4', 'Assets/cenaEspelho/diario-4.png');
+        this.load.image('escondeEldric', 'Assets/cenaEspelho/escondeEldric.png');
+        
 
 
         // CenaSobreMesa3
