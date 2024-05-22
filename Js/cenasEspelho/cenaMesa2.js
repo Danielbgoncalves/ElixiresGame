@@ -1,3 +1,4 @@
+import itens from '../itens.js'
 import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaMesa2 extends Phaser.Scene{
@@ -64,7 +65,7 @@ export default class CenaMesa2 extends Phaser.Scene{
     adicionaGavetas(){
         this.gavVA = this.add.image(516,165, 'gavetaVAberta-cena3');
         this.gavVA.setVisible(false);
-        this.gavVA.setDepth(1);
+        this.gavVA.setDepth(0.3);
         this.gavVA.setInteractive();
         this.gavVF = this.add.image(516,127, 'gavetaVFechada-cena3');
         this.gavVF.setInteractive();
@@ -92,6 +93,7 @@ export default class CenaMesa2 extends Phaser.Scene{
             } else if(gaveta === this.gavVA){
                 gaveta.setVisible(false);
                 this.gavVF.setVisible(true);
+                
 
             } else if(gaveta === this.gavCF && ( this.itemClicado === 'chaveCinzaPeq' || this.gavCDestrancada)){
                 this.abreGaveta(gaveta, this.gavCA, 'chaveCinzaPeq');
@@ -106,6 +108,8 @@ export default class CenaMesa2 extends Phaser.Scene{
             } else if(gaveta === this.gavAA){
                 gaveta.setVisible(false);
                 this.gavAF.setVisible(true);
+                if(this.carta1Fechada)
+                    this.carta1Fechada.disableBody(true,true);
 
             }          
         });
@@ -121,17 +125,31 @@ export default class CenaMesa2 extends Phaser.Scene{
             this.gavCDestrancada = true;
         else if(chave == 'chaveAmarela')
             this.gavADestrancada = true;
-    
+        
+        this.mostraOItem(this.itemClicado);
+
+        // Apagua o item do inventário
         let indexDoItem = this.inventario.indexOf(this.itemClicado);
         if(indexDoItem !== -1){
             this.inventario.splice(indexDoItem, 1);
             updateIventario(this);
         }
+
+        
+
     }
 
-    /*mostraItens(){
-        this
-    }*/
+    mostraOItem(item){
+        if(item === 'chaveAmarela'){
+            this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1Fechada');
+            this.carta1Fechada.setDepth(0.1);
+            this.carta1Fechada.angle = 90;
+            if(this.gameState.itensColetados[this.carta1Fechada.id])
+                this.carta1Fechada.disableBody(true,true);
+        }
+
+    }
+
 
     update(){}
 }
