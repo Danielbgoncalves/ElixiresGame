@@ -80,6 +80,7 @@ export default class CenaCarregamento extends Phaser.Scene{
        
         // cenaEspelhoMesmo
         this.load.image('eldric', 'Assets/cenaEspelho/sprite-eldric.png');
+        this.load.image('eldric-seguraCopo', 'Assets/cenaEspelho/eldric-seguraCopo.png');
         this.load.image('cenaEspelhoMesmo', 'Assets/cenaEspelho/cenaEspelhoMesmo.png');
         this.load.image('espelho', 'Assets/cenaEspelho/espelho.png');
         this.load.image('diario-0', 'Assets/cenaEspelho/diario-0.png');

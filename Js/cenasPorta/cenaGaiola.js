@@ -34,15 +34,8 @@ export default class CenaGaiola extends Phaser.Scene{
         updateIventario(this);
         clickAnims(this);
 
-        // Comida do corvo como coletavel
-        this.comidaCorvoo = new itens(this, 550, 280, 'comida-corvo', 'comida-corvoPeq');
-        if(this.gameState.itensColetados[this.comidaCorvoo.id])
-            this.comidaCorvoo.disableBody(true,true);
-
         // Ovo coletavel
         if(this.passaroBotou) this.mostraOvo();
-
-        //chamaCena(this.seta, this, 'CenaPorta');
 
         this.anims.create({
             key: 'comer',

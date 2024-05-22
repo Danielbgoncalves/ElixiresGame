@@ -108,7 +108,7 @@ export default class CenaRetrato extends Phaser.Scene{
                         this.inventario.splice(this.index, 1);
                         this.sceneState[3] = 1;
                     } 
-                this.updateIventario();
+                updateIventario(this);
                 this.itemClicado = 0;
                 
         }

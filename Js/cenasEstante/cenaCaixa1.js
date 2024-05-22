@@ -87,7 +87,7 @@ export default class cenaCaixa1 extends Phaser.Scene{
 
     caixaAberta(){
         this.imagemDeFundo.setTexture('cenaCaixa1-aberta');
-        this.pedacoFoto1 = new itens(this, 450, 300, 'fotoPeq1', 'fotoPeq1');
+        this.pedacoFoto1 = new itens(this, 450, 360, 'fotoGrande1', 'fotoPeq1');
         if(this.gameState.itensColetados[this.pedacoFoto1.id])
             this.pedacoFoto1.disableBody(true,true);
         this.mostraCodigo();

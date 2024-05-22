@@ -1,4 +1,4 @@
-import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaEspelhoMesmo extends Phaser.Scene{
     constructor(){
@@ -33,6 +33,36 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
 
         chamaCena(this.seta, this, 'CenaEspelho');
 
+        this.input.on('pointerdown',()=>{
+            let mouseX = this.input.activePointer.x;
+            let mouseY = this.input.activePointer.y;
+            let menorX = 809;
+            let maiorX = 877;
+            
+            console.log('x: ', mouseX, 'y: ', mouseY);            
+            this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
+        });
+
+    }
+
+    verificaOndeClicou(mouseX, mouseY,menorX,maiorX){
+
+        verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
+
+         if(mouseX > 79 && mouseY > 87 && mouseX < 640 && mouseY < 400 ) {
+            if(this.itemClicado == 'copoPeq'){
+                this.mudaSprite();
+            }
+        }
+    }
+
+    mudaSprite(){
+        let indexDaVela = this.inventario.indexOf('copoPeq');
+        if(indexDaVela !== -1)
+            this.inventario.splice(indexDaVela, 1);
+        updateIventario(this);
+
+        this.eldric.setTexture('eldric-seguraCopo');
     }
 
     update(){
