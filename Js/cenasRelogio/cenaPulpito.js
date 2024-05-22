@@ -118,7 +118,7 @@ export default class CenaPulpito extends Phaser.Scene{
     }
 
     mostraComidaDoPassaro(){
-        this.comidaCorvo = new itens(this, 550, 280, 'comida-corvo', 'comida-corvoPeq');
+        this.comidaCorvo = new itens(this, 500, 245, 'comida-corvo', 'comida-corvoPeq');
         if(this.gameState.itensColetados[this.comidaCorvo.id])
             this.comidaCorvo.disableBody(true,true);
     }

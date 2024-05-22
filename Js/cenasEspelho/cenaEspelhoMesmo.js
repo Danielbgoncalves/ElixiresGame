@@ -5,6 +5,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         super({
             key: 'CenaEspelhoMesmo'
         });
+        this.seguraCopo = false;
     }
 
 
@@ -19,7 +20,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         this.add.image(450, 275, 'espelho').setDepth(0.2);
         this.add.image(359, 475, 'escondeEldric').setDepth(0.3);
 
-        this.eldric = this.add.image(360, 350, 'eldric');
+        this.eldric = this.add.image(360, 350, !this.seguraCopo ? 'eldric' : 'eldric-seguraCopo');
         
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -38,8 +39,8 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             let mouseY = this.input.activePointer.y;
             let menorX = 809;
             let maiorX = 877;
-            
-            console.log('x: ', mouseX, 'y: ', mouseY);            
+
+            //console.log('x: ', mouseX, 'y: ', mouseY);            
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
         });
 
@@ -50,9 +51,8 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
          if(mouseX > 79 && mouseY > 87 && mouseX < 640 && mouseY < 400 ) {
-            if(this.itemClicado == 'copoPeq'){
+            if(this.itemClicado == 'copoPeq')
                 this.mudaSprite();
-            }
         }
     }
 
@@ -63,10 +63,11 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         updateIventario(this);
 
         this.eldric.setTexture('eldric-seguraCopo');
+        this.seguraCopo = true;
     }
 
     update(){
         if(this.eldric.y > 280)
-            this.eldric.y-=1.5;
+            this.eldric.y -= 1.5;
     }
 }

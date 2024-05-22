@@ -10,8 +10,7 @@ export default class CenaPorta extends Phaser.Scene{
         this.gameState = {
             itensColetados: {}
         };
-        /*this.inventario = this.inventario || [];
-        this.spritesInventario = this.spritesInventario || [];*/
+       
     }
 
     init(data){
@@ -31,6 +30,9 @@ export default class CenaPorta extends Phaser.Scene{
         
         this.cameras.main.fadeIn(400, 0, 0, 0);
         this.add.image(450, 275, 'cena1' );
+
+        this.sys.game.music = this.sound.add('mainTheme');
+        this.sys.game.music.play({ loop: true });
 
         //setas
         this.setaEsq = this.add.image(20, 275, 'seta');

@@ -89,8 +89,6 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('diario-3', 'Assets/cenaEspelho/diario-3.png');
         this.load.image('diario-4', 'Assets/cenaEspelho/diario-4.png');
         this.load.image('escondeEldric', 'Assets/cenaEspelho/escondeEldric.png');
-        
-
 
         // CenaSobreMesa3
         this.load.image('cenaSobreMesa2', 'Assets/cenaEspelho/cenaSobreMesa2.png');
@@ -105,9 +103,9 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('gavetaAAberta-cena3', 'Assets/cenaEspelho/gavetaAAberta-cena3.png');
         this.load.image('gavetaCAberta-cena3', 'Assets/cenaEspelho/gavetaCAberta-cena3.png');
         this.load.image('gavetaVAberta-cena3', 'Assets/cenaEspelho/gavetaVAberta-cena3.png');
+        this.load.image('carta1Fechada', 'Assets/cenaEspelho/carta1Fechada.png');
 
-
-
+        
 
         // -------------------- CenaRelogio---------------------
         this.load.image('pulpito', 'Assets/cenaRelogio/pulpito.png');
@@ -122,6 +120,7 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('oUltElixir-4', 'Assets/cenaRelogio/oUltElixir-4.png' );
         this.load.image('comida-corvo', 'Assets/cenaRelogio/comida-corvo.png' );
         this.load.image('comida-corvoPeq', 'Assets/cenaRelogio/comida-corvoPeq.png' );
+        this.load.image('carta1Aberta', 'Assets/cenaRelogio/carta1Aberta.png' );
 
         // CenaVela
         this.load.image('cenaVela', 'Assets/cenaRelogio/cenaVela.png' );
@@ -136,7 +135,8 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('gavetaFechada-cena4', 'Assets/cenaRelogio/gavetaFechada-cena4.png' );
 
 
-
+        // Musica
+        this.load.audio('mainTheme', 'Assets/mainTheme.mp3')
 
         
 
