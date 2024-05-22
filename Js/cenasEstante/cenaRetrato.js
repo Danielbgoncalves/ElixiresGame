@@ -1,4 +1,6 @@
 import itens from "../itens.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
+
 export default class CenaRetrato extends Phaser.Scene{
     constructor(){
         super({
@@ -27,24 +29,27 @@ export default class CenaRetrato extends Phaser.Scene{
         this.verificaSceneState();
 
         this.add.image(450, 275, 'cenaPortaRetrato');
+
         this.spritesInventario = [];
+        inicializaIventarios(this);
+        updateIventario(this);
         this.itemClicado; 
-        
-        this.inicializaIventarios();
-        this.updateIventario();
+        clickAnims(this);
 
         // Logica da seta
         this.seta = this.add.image(450, 520, 'seta');
         this.seta.setInteractive();
         this.seta.angle = 270;
 
-        this.seta.on('pointerdown',()=>{
+        chamaCena(this.seta, this, 'CenaEstante');
+
+        /*this.seta.on('pointerdown',()=>{
             this.cameras.main.fadeOut(200, 0, 0, 0, (camera, progress)=> {
                 if (progress > 0.9) {
                     this.scene.start('CenaEstante', {inventario: this.inventario, gameState: this.gameState});
                 }
             }, this);
-        });
+        });*/
 
         // Detecta o clique e a região
         this.input.on('pointerdown',()=>{
@@ -67,22 +72,7 @@ export default class CenaRetrato extends Phaser.Scene{
 
     }
 
-    inicializaIventarios() {
-        for (let i = 0; i < 6; i++) {
-            let sprite = this.physics.add.image(835, 80 + (i * 80), 'seta').setDepth(1);
-            this.spritesInventario[i] = sprite;
-        }
-    }
-
-    updateIventario() {
-        for (let i = 0; i < 6; i++) {
-            if (this.inventario[i])
-                this.spritesInventario[i].setTexture(this.inventario[i]);
-            else 
-                this.spritesInventario[i].setTexture('seta');
-        }
-    }
-
+    
     verificaOndeClicou(mouseX, mouseY,menorX,maiorX){
         if(mouseX > menorX && mouseX < maiorX){
             if( mouseY > 48 && mouseY < 116)
@@ -146,13 +136,5 @@ export default class CenaRetrato extends Phaser.Scene{
 
     }
 
-    update(){
-        /*for(let i = 0; i < this.inventario.length; i ++)
-            if(this.inventario[i] == 'chaveAmarela'){
-                this.chaveAmarela.setVisible(false);
-                console.loh('era pra ta invisivel');
-            }*/
-                
-
-    }
+    update(){}
 }

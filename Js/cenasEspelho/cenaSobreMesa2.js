@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaSobreMesa2 extends Phaser.Scene{
     constructor(){
@@ -29,6 +29,7 @@ export default class CenaSobreMesa2 extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         // Logica das setas
         this.seta = this.add.image(450, 520, 'seta').setDepth(0.3);

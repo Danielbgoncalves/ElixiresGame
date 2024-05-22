@@ -15,6 +15,7 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('seta', 'Assets/seta.png');
         this.load.image('item', 'Assets/item.png');
 
+
         this.load.image('fotoPeq1','Assets/fotoPeq1.png');
         this.load.image('fotoPeq2','Assets/fotoPeq2.png');
         this.load.image('fotoPeq3','Assets/fotoPeq3.png');
@@ -22,6 +23,8 @@ export default class CenaCarregamento extends Phaser.Scene{
 
         this.load.image('gaiola', 'Assets/cenaPorta/gaiola.png');
         this.load.image('plantaVerde', 'Assets/cenaPorta/plantaVerde.png' );
+        this.load.spritesheet('click-sprite', 'Assets/cenaPorta/click-sprite.png', {frameWidth: 21, frameHeight: 21});
+        
 
         // CenaGaiola
         this.load.image('cenaGaiola', 'Assets/cenaPorta/cenaGaiola.png');

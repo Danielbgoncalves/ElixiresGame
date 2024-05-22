@@ -1,4 +1,4 @@
-import {inicializaIventarios, updateIventario, chamaCena} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 //import itens from "../itens.js";
 
 export default class CenaPlantaVerde extends Phaser.Scene{
@@ -28,6 +28,7 @@ export default class CenaPlantaVerde extends Phaser.Scene{
         this.itemClicado = 0; 
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         // Logica da seta
         this.seta = this.add.image(450, 520, 'seta');

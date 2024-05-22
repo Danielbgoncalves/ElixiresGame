@@ -1,3 +1,5 @@
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
+
 export default class CenaRelogio extends Phaser.Scene{
     constructor(){
         super({
@@ -35,20 +37,21 @@ export default class CenaRelogio extends Phaser.Scene{
         this.pulpito = this.add.image(186, 423, 'pulpito');
         this.pulpito.setInteractive();
 
-         // Mesa3
-         this.mesa3 = this.add.image(598, 410, 'mesa3');
-         this.mesa3.setInteractive();
+        // Mesa3
+        this.mesa3 = this.add.image(598, 410, 'mesa3');
+        this.mesa3.setInteractive();
 
         this.spritesInventario = [];
-        this.inicializaIventarios();
-        this.updateIventario();
+        inicializaIventarios(this);
+        updateIventario(this);
+        clickAnims(this);
 
         
-        this.chamaCena(this.setaEsq, 'CenaEspelho');
-        this.chamaCena(this.setaDir, 'CenaPorta');
-        this.chamaCena(this.pulpito, 'CenaPulpito');
-        this.chamaCena(this.mesa3, 'CenaMesa3');
-        this.chamaCena(this.vela, 'CenaVela');
+        chamaCena(this.setaEsq, this, 'CenaEspelho');
+        chamaCena(this.setaDir, this, 'CenaPorta');
+        chamaCena(this.pulpito, this, 'CenaPulpito');
+        chamaCena(this.mesa3, this, 'CenaMesa3');
+        chamaCena(this.vela, this,'CenaVela');
 
     }
 

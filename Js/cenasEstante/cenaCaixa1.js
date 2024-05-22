@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 
 export default class cenaCaixa1 extends Phaser.Scene{
@@ -26,6 +26,7 @@ export default class cenaCaixa1 extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         //triangulo = 0, somatorio = 3, birculo = 2, fecha = 1,
         this.senha = [0,3,2];

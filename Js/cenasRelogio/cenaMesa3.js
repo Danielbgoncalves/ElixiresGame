@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaMesa3 extends Phaser.Scene{
     constructor(){
@@ -29,6 +29,7 @@ export default class CenaMesa3 extends Phaser.Scene{
          this.spritesInventario = [];
          inicializaIventarios(this);
          updateIventario(this);
+         clickAnims(this);
 
          // Seta pra sair da cena
          this.seta = this.add.image(450, 520, 'seta');
@@ -40,22 +41,6 @@ export default class CenaMesa3 extends Phaser.Scene{
          this.mudatextura(this.gaveta1);
          this.mudatextura(this.gaveta2);
 
-         /*this.gaveta1.on('pointerdown', ()=>{ 
-            this.mudatextura(this.gaveta1);
-         });
-
-         this.gaveta2.on('pointerdown', ()=>{ 
-            this.mudatextura(this.gaveta2);
-         });*/
-
-         /*this.input.on('pointerdown', ()=>{
-            let mouseX = this.input.activePointer.x;
-            let mouseY = this.input.activePointer.y;
-            let menorX = 809;
-            let maiorX = 877;
-
-            console.log('x: ', mouseX, 'y: ', mouseY);
-         });*/
 
     }
 

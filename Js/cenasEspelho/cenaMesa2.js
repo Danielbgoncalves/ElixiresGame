@@ -1,4 +1,4 @@
-import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaMesa2 extends Phaser.Scene{
     constructor(){
@@ -25,6 +25,7 @@ export default class CenaMesa2 extends Phaser.Scene{
         this.itemClicado = 0;
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         // Seta pra sair da cena
         this.seta = this.add.image(450, 520, 'seta');
@@ -120,14 +121,17 @@ export default class CenaMesa2 extends Phaser.Scene{
             this.gavCDestrancada = true;
         else if(chave == 'chaveAmarela')
             this.gavADestrancada = true;
-        
-
+    
         let indexDoItem = this.inventario.indexOf(this.itemClicado);
         if(indexDoItem !== -1){
             this.inventario.splice(indexDoItem, 1);
             updateIventario(this);
         }
     }
+
+    /*mostraItens(){
+        this
+    }*/
 
     update(){}
 }

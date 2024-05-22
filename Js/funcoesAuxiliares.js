@@ -52,3 +52,28 @@ export function verificaCliqueNoInventario(cena, mouseX, mouseY, menorX, maiorX)
         else cena.itemClicado = 0;
     }
 }
+
+export function clickAnims(cena){
+    cena.anims.create({
+        key: 'clicar',
+        frames: cena.anims.generateFrameNumbers('click-sprite', { start: 0, end: 4}),
+        frameRate: 21,
+        repeat: 0
+    });   
+    
+    cena.input.on('pointerdown', function (pointer) {
+        // Crie um sprite no local do clique
+       let clickAnimation = cena.add.sprite(pointer.x, pointer.y, 'seta');
+       clickAnimation.setDepth(1);
+
+     
+
+        // Reproduza a animação 'clicar'
+        clickAnimation.play('clicar');
+
+        // Quando a animação terminar, destrua o sprite
+        clickAnimation.on('animationcomplete', function () {
+                clickAnimation.destroy();
+        }, cena);
+    }, cena);
+}

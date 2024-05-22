@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 
 export default class CenaLivros extends Phaser.Scene{
@@ -26,6 +26,7 @@ export default class CenaLivros extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         this.input.on('drag', (pointer,gameObject,dragX,dragY)=>{
             gameObject.setDepth(1);

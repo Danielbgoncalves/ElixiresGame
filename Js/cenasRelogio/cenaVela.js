@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena,verificaCliqueNoInventario} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena,verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaVela extends Phaser.Scene{
     constructor(){
@@ -32,6 +32,7 @@ export default class CenaVela extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
        
         chamaCena(this.seta, this, 'CenaRelogio');
 

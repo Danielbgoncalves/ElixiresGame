@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaPorta extends Phaser.Scene{
     constructor(){
@@ -48,6 +48,7 @@ export default class CenaPorta extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         // Ítem pegável
         this.pedacoFoto1 = new itens(this, 450, 300, 'fotoPeq1', 'fotoPeq1');
@@ -68,12 +69,12 @@ export default class CenaPorta extends Phaser.Scene{
 
         // Planta verde
         chamaCena(this.plantaVerde, this  ,'CenaPlantaVerde');
+
         
-    
+
+        
     }
-
     
-
     update(){
 
         

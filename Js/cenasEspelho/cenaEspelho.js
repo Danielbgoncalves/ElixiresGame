@@ -1,4 +1,4 @@
-import {inicializaIventarios, updateIventario, chamaCena} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class cenaEspelho extends Phaser.Scene{
     constructor(){
@@ -30,6 +30,7 @@ export default class cenaEspelho extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         // Setas
         chamaCena(this.setaEsq, this, 'CenaEstante');

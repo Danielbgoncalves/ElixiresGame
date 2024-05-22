@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 
 export default class CenaGaiola extends Phaser.Scene{
@@ -32,7 +32,7 @@ export default class CenaGaiola extends Phaser.Scene{
         this.itemClicado; 
         inicializaIventarios(this);
         updateIventario(this);
-
+        clickAnims(this);
 
         // Comida do corvo como coletavel
         this.comidaCorvoo = new itens(this, 550, 280, 'comida-corvo', 'comida-corvoPeq');

@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena } from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaPulpito extends Phaser.Scene{
     constructor(){
@@ -44,6 +44,7 @@ export default class CenaPulpito extends Phaser.Scene{
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
+        clickAnims(this);
 
         // Configuração das paginas do livro 
         this.paginaAtual = this.add.image(450, 275, 'oUltElixir-0');
