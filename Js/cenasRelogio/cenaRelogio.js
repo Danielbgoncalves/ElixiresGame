@@ -41,6 +41,10 @@ export default class CenaRelogio extends Phaser.Scene{
         this.mesa3 = this.add.image(598, 410, 'mesa3');
         this.mesa3.setInteractive();
 
+        // Ponteiros do relógio
+        this.relogio = this.add.image(398, 245, 'relogio');
+        this.relogio.setInteractive();
+
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
@@ -52,6 +56,8 @@ export default class CenaRelogio extends Phaser.Scene{
         chamaCena(this.pulpito, this, 'CenaPulpito');
         chamaCena(this.mesa3, this, 'CenaMesa3');
         chamaCena(this.vela, this,'CenaVela');
+        chamaCena(this.relogio, this,'CenaPonteiros');
+
 
     }
 

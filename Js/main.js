@@ -20,7 +20,8 @@ import CenaSobreMesa2 from   './cenasEspelho/cenaSobreMesa2.js';
 import CenaRelogio from      './cenasRelogio/cenaRelogio.js';
 import CenaPulpito from      './cenasRelogio/cenaPulpito.js';
 import CenaVela from         './cenasRelogio/cenaVela.js';
-import CenaMesa3 from        './cenasRelogio/cenaMesa3.js'
+import CenaMesa3 from        './cenasRelogio/cenaMesa3.js';
+import CenaPonteiros from    './cenasRelogio/cenaPonteiros.js'
 
 
 const config = {
@@ -54,7 +55,8 @@ const config = {
         CenaRelogio,
         CenaPulpito,
         CenaVela,
-        CenaMesa3
+        CenaMesa3,
+        CenaPonteiros
     ]
 }
 

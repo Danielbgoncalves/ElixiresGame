@@ -105,12 +105,13 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('gavetaVAberta-cena3', 'Assets/cenaEspelho/gavetaVAberta-cena3.png');
         this.load.image('carta1Fechada', 'Assets/cenaEspelho/carta1Fechada.png');
 
-        
+
 
         // -------------------- CenaRelogio---------------------
         this.load.image('pulpito', 'Assets/cenaRelogio/pulpito.png');
         this.load.image('cenaPulpito', 'Assets/cenaRelogio/cenaPulpito.png');
-        this.load.image('mesa3', 'Assets/cenaRelogio/mesa3.png' )
+        this.load.image('mesa3', 'Assets/cenaRelogio/mesa3.png' );
+        this.load.image('relogio', 'Assets/cenaRelogio/relogio.png')
 
         // CenaPulpito
         this.load.image('oUltElixir-0', 'Assets/cenaRelogio/oUltElixir-0.png');
@@ -134,6 +135,10 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('gavetaAberta-cena4', 'Assets/cenaRelogio/gavetaAberta-cena4.png' );
         this.load.image('gavetaFechada-cena4', 'Assets/cenaRelogio/gavetaFechada-cena4.png' );
 
+        //CenaPonteiros
+        this.load.image('cenaPonteiros', 'Assets/cenaRelogio/cenaPonteiros.png' );
+        this.load.image('ponteiroP', 'Assets/cenaRelogio/ponteiroP.png' );
+        this.load.image('ponteiroG', 'Assets/cenaRelogio/ponteiroG.png' );
 
         // Musica
         this.load.audio('mainTheme', 'Assets/mainTheme.mp3')
