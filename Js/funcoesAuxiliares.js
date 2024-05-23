@@ -77,3 +77,25 @@ export function clickAnims(cena){
         }, cena);
     }, cena);
 }
+
+/*export class Legiveis {
+    constructor(nome, paginas){
+        this.nome = nome;
+        this.paginas = paginas;
+        this.paginaAtual;
+    }
+
+    proximaPagina(){
+        if(this.paginaAtual < this.paginas.lenthg-1)
+            this.paginaAtual++;
+    }
+
+    paginaAnterior(){
+        if(this.paginaAtual !== 0)
+            this.paginaAtual--;
+    }
+
+    getPagAtual(){
+        return this.paginas[this.paginaAtual]
+    }
+}*/

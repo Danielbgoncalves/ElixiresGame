@@ -10,6 +10,7 @@ export default class CenaPulpito extends Phaser.Scene{
         this.index = 0;
         this.comidaCorvoColetada = false;
         this.mostrouLivro = false;
+        this.mostrouCarta = false;
     }
    
     init(data) {
@@ -29,6 +30,8 @@ export default class CenaPulpito extends Phaser.Scene{
         this.setaDir.setInteractive();
         this.setaDir.setVisible(false);
         this.setaDir.angle = 180;
+
+        
 
         // Seta pra sair da cena
         this.seta = this.add.image(450, 520, 'seta');
@@ -66,6 +69,7 @@ export default class CenaPulpito extends Phaser.Scene{
         });
 
         if(this.mostrouLivro) this.mostraPaginasDoLivro(0);
+        if(this.mostrouarta) this.mostraCarta();
 
     }
 
@@ -84,12 +88,38 @@ export default class CenaPulpito extends Phaser.Scene{
             else if (mouseY > 48 + 76*5 && mouseY < 116 + 76*5)
                 this.itemClicado = this.inventario[5];
             else this.itemClicado = 0;
-        } else if(mouseX < 791) {
+        } else if(mouseX < 700 && mouseY < 500) {
             if(this.itemClicado == 'oUltElixir-dorsoPeq' && !this.mostrouLivro){
                 this.mostrouLivro = true;
                 this.mostraPaginasDoLivro(0);
+            }else if(this.mostrouLivro) {
+                this.mostrouLivro = false;
+                this.paginaAtual.setVisible(false);
+                this.setaEsq.setVisible(false);
+                this.setaDir.setVisible(false);
+                this.inventario.push('oUltElixir-dorsoPeq');
+                updateIventario(this);
+            } else if(this.itemClicado == 'carta1Fechada' && !this.mostrouCarta){
+                this.mostrouCarta = true;
+                this.mostraCarta();
+            } else if(this.mostrouCarta){
+                this.mostrouCarta = false;
+                this.paginaAtual.setVisible(false);
+                this.inventario.push('carta1Fechada');
+                updateIventario(this);
+
             }
         }
+    }
+
+    mostraCarta(){
+        let indexDaCarta = this.inventario.indexOf('carta1Fechada');
+        if(indexDaCarta !== -1)
+            this.inventario.splice(indexDaCarta, 1);
+        updateIventario(this);
+
+        this.paginaAtual.setTexture('carta1Aberta');
+        this.paginaAtual.setVisible(true);
     }
 
     mostraPaginasDoLivro(sum){
@@ -109,9 +139,9 @@ export default class CenaPulpito extends Phaser.Scene{
         this.paginaAtual.setTexture(this.paginas[this.index]);
         this.paginaAtual.setVisible(true);
 
-        if( this.index == 4 )
+        if( this.index === 4 )
             this.mostraComidaDoPassaro();
-        else if(this.comidaCorvo){
+        else if(this.comidaCorvo && this.comidaCorvo.body){
             this.comidaCorvo.disableBody(true,true);
         }
               
@@ -120,7 +150,9 @@ export default class CenaPulpito extends Phaser.Scene{
     mostraComidaDoPassaro(){
         this.comidaCorvo = new itens(this, 500, 245, 'comida-corvo', 'comida-corvoPeq');
         if(this.gameState.itensColetados[this.comidaCorvo.id])
-            this.comidaCorvo.disableBody(true,true);
+            if(this.comidaCorvo && this.comidaCorvo.body){
+                this.comidaCorvo.disableBody(true,true);
+            }
     }
 
     mudaPagina(objeto, valor){

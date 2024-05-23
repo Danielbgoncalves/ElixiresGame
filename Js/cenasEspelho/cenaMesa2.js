@@ -135,8 +135,6 @@ export default class CenaMesa2 extends Phaser.Scene{
             updateIventario(this);
         }
 
-        
-
     }
 
     mostraOItem(item){
@@ -149,7 +147,6 @@ export default class CenaMesa2 extends Phaser.Scene{
         }
 
     }
-
 
     update(){}
 }
