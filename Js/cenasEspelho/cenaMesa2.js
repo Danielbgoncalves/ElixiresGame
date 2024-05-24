@@ -139,7 +139,7 @@ export default class CenaMesa2 extends Phaser.Scene{
 
     mostraOItem(item){
         if(item === 'chaveAmarela'){
-            this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1Fechada');
+            this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
             this.carta1Fechada.setDepth(0.1);
             this.carta1Fechada.angle = 90;
             if(this.gameState.itensColetados[this.carta1Fechada.id])

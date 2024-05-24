@@ -7,7 +7,7 @@ export default class CenaLivros extends Phaser.Scene{
         super({
             key: 'CenaLivros'
         });
-        this.livros = [];
+        //this.livros = [];
     }
 
     init(data) {
@@ -19,9 +19,8 @@ export default class CenaLivros extends Phaser.Scene{
     create(){
         this.add.image(450, 275, 'cenaLivros');
 
-        //livros do puzzle
-        if(!this.livros.length) this.defineLivros();
-        else this.reordenarLivros();
+        this.livros = [];
+        this.defineLivros();
 
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -90,13 +89,13 @@ export default class CenaLivros extends Phaser.Scene{
     
         // Ajusta a posição dos livros
         for (var i = 0; i < this.livros.length; i++) {
-            this.livros[i].x = 85 + i * 89; // Ajuste este cálculo conforme necessário
+            this.livros[i].x = 85 + i * 89; 
         }
 
     }
 
     verificaCorretude(){
-        this.senha = [5,1,2,3,4];
+        this.senha = [4,1,5,2,3];
         this.deAcordo = true;
         for( let i = 0; i < 5; i++)
             if(this.livros[i].id != this.senha[i])

@@ -69,7 +69,7 @@ export default class CenaPulpito extends Phaser.Scene{
         });
 
         if(this.mostrouLivro) this.mostraPaginasDoLivro(0);
-        if(this.mostrouarta) this.mostraCarta();
+        if(this.mostrouCarta) this.mostraCarta();
 
     }
 
@@ -99,15 +99,14 @@ export default class CenaPulpito extends Phaser.Scene{
                 this.setaDir.setVisible(false);
                 this.inventario.push('oUltElixir-dorsoPeq');
                 updateIventario(this);
-            } else if(this.itemClicado == 'carta1Fechada' && !this.mostrouCarta){
+            } else if(this.itemClicado == 'carta1FechadaPeq' && !this.mostrouCarta){
                 this.mostrouCarta = true;
                 this.mostraCarta();
             } else if(this.mostrouCarta){
                 this.mostrouCarta = false;
                 this.paginaAtual.setVisible(false);
-                this.inventario.push('carta1Fechada');
+                this.inventario.push('carta1FechadaPeq');
                 updateIventario(this);
-
             }
         }
     }
