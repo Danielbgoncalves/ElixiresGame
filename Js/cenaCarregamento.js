@@ -139,6 +139,8 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('cenaPonteiros', 'Assets/cenaRelogio/cenaPonteiros.png' );
         this.load.image('ponteiroP', 'Assets/cenaRelogio/ponteiroP.png' );
         this.load.image('ponteiroG', 'Assets/cenaRelogio/ponteiroG.png' );
+        this.load.image('botaoRelogio', 'Assets/cenaRelogio/botaoRelogio.png' );
+
 
         // Musica
         this.load.audio('mainTheme', 'Assets/mainTheme.mp3')

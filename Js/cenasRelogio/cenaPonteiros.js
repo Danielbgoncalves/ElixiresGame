@@ -21,13 +21,32 @@ export default class CenaPonteiros extends Phaser.Scene{
         this.add.image(450, 275, 'cenaPonteiros' );
 
         // Os Ponteiros, estrelas dessa cena
-        this.ponteiroG = this.add.image(438, 314, 'ponteiroG');
-        this.ponteiroP = this.add.image(438, 314, 'ponteiroP');
+        this.ponteiroG = this.add.image(436, 308, 'ponteiroG');
+        this.ponteiroG.setInteractive();
+        this.ponteiroG.setOrigin(0.5, 0.9);
+
+
+        this.ponteiroP = this.add.image(436, 308, 'ponteiroP');
+        this.ponteiroP.setInteractive();
+        this.ponteiroP.setOrigin(0.5, 0.9);
         this.ponteiroP.angle = 90;
 
-        /*Falta mudar o ponto em q eles sao definidos, se colocar em suas bases fica mais facil
-         fazer a manipulação de anglos */
+        this.ponteiroP.on('pointerdown', () =>{
+            this.draggingP = true;
+        });
 
+        this.ponteiroG.on('pointerdown', () =>{
+            this.draggingG = true;
+        });
+
+        this.input.on('pointerup', () =>{
+            this.draggingP = false;
+            this.draggingG = false;
+            this.verificaCorretude();
+        });
+
+        this.add.image(436, 308, 'botaoRelogio');
+  
 
         this.seta = this.add.image(450, 520, 'seta');
         this.seta.setInteractive();
@@ -40,8 +59,32 @@ export default class CenaPonteiros extends Phaser.Scene{
         clickAnims(this);
 
 
-        chamaCena(this.seta, this, 'cenaRelogio');
+        chamaCena(this.seta, this, 'CenaRelogio');
     }
 
-    update(){}
+    verificaCorretude(){
+
+        // Senha 1: 
+        if(this.angulacaoP > 175 && this.angulacaoP < 185 && this.angulacaoG > 265 && this.angulacaoG< 275){
+            console.log('acertou');
+        }
+    }
+
+    update(){
+        if(this.draggingP){
+            let pointer = this.input.activePointer;
+            let anguloEnRadianos = Phaser.Math.Angle.Between(this.ponteiroP.x, this.ponteiroP.y, pointer.x, pointer.y);
+            let anguloEmGraus = Phaser.Math.RadToDeg(anguloEnRadianos);
+            this.angulacaoP = 90 + anguloEmGraus;
+            this.ponteiroP.angle = this.angulacaoP
+        }
+
+        if(this.draggingG){
+            let pointerG = this.input.activePointer;
+            let anguloEnRadianos = Phaser.Math.Angle.Between(this.ponteiroG.x, this.ponteiroG.y, pointerG.x, pointerG.y);
+            let anguloEmGraus = Phaser.Math.RadToDeg(anguloEnRadianos);
+            this.angulacaoG = 90 + anguloEmGraus;
+            this.ponteiroG.angle =  this.angulacaoG;
+        }
+    }
 }
