@@ -5,7 +5,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         super({
             key: 'CenaEspelhoMesmo'
         });
-        this.seguraCopo = false;
+        this.oQueEldricSegura = 'nada'
     }
 
 
@@ -20,7 +20,17 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         this.add.image(450, 275, 'espelho').setDepth(0.2);
         this.add.image(359, 475, 'escondeEldric').setDepth(0.3);
 
-        this.eldric = this.add.image(360, 350, !this.seguraCopo ? 'eldric' : 'eldric-seguraCopo');
+        let textura;
+        if(this.oQueEldricSegura === 'nada')
+            textura = 'eldric';
+        else if (this.oQueEldricSegura === 'copo')
+            textura = 'eldric-seguraCopo';
+        else if (this.oQueEldricSegura === 'cha')
+            textura = 'eldric-seguraCha';
+
+        this.eldric = this.add.image(360, 350, textura);
+
+       //this.eldric = this.add.image(360, 350, !this.seguraCopo ? 'eldric' :  'eldric-seguraCopo');
         
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -51,19 +61,33 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
          if(mouseX > 79 && mouseY > 87 && mouseX < 640 && mouseY < 400 ) {
-            if(this.itemClicado == 'copoPeq')
-                this.mudaSprite();
+            if(this.itemClicado === 'copoPeq')
+                this.mudaSprite(0);
+            else if(this.itemClicado === 'galhoPeq')
+                this.mudaSprite(1);
         }
     }
 
-    mudaSprite(){
-        let indexDaVela = this.inventario.indexOf('copoPeq');
-        if(indexDaVela !== -1)
-            this.inventario.splice(indexDaVela, 1);
-        updateIventario(this);
+    mudaSprite(id){
+        console.log('o item clicado é: ', this.itemClicado);
+        if(id === 0){
+           let indexDaVela = this.inventario.indexOf('copoPeq');
+            if(indexDaVela !== -1)
+                this.inventario.splice(indexDaVela, 1);
+            updateIventario(this);
 
-        this.eldric.setTexture('eldric-seguraCopo');
-        this.seguraCopo = true;
+            this.eldric.setTexture('eldric-seguraCopo');
+            this.oQueEldricSegura = 'copo'; 
+        } else if( id === 1 && this.oQueEldricSegura === 'copo'){
+            let indexDaVela = this.inventario.indexOf('galhoPeq');
+            if(indexDaVela !== -1)
+                this.inventario.splice(indexDaVela, 1);
+            updateIventario(this);
+
+            this.eldric.setTexture('eldric-seguraCha');
+            this.oQueEldricSegura = 'cha'; 
+        }
+        
     }
 
     update(){

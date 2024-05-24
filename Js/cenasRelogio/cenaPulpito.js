@@ -91,6 +91,7 @@ export default class CenaPulpito extends Phaser.Scene{
         } else if(mouseX < 700 && mouseY < 500) {
             if(this.itemClicado == 'oUltElixir-dorsoPeq' && !this.mostrouLivro){
                 this.mostrouLivro = true;
+                this.itemClicado = 0;
                 this.mostraPaginasDoLivro(0);
             }else if(this.mostrouLivro) {
                 this.mostrouLivro = false;
@@ -99,23 +100,33 @@ export default class CenaPulpito extends Phaser.Scene{
                 this.setaDir.setVisible(false);
                 this.inventario.push('oUltElixir-dorsoPeq');
                 updateIventario(this);
+                //this.itemClicado = 0;
             } else if(this.itemClicado == 'carta1FechadaPeq' && !this.mostrouCarta){
                 this.mostrouCarta = true;
+                this.itemClicado = 0;
                 this.mostraCarta();
             } else if(this.mostrouCarta){
                 this.mostrouCarta = false;
                 this.paginaAtual.setVisible(false);
-                this.inventario.push('carta1FechadaPeq');
+                if((this.inventario.indexOf('carta1FechadaPeq') === -1))
+                    this.inventario.push('carta1FechadaPeq');
                 updateIventario(this);
+                console.log('mostrouCarta esta true');
+                //this.itemClicado = 0;
             }
         }
     }
 
     mostraCarta(){
-        let indexDaCarta = this.inventario.indexOf('carta1Fechada');
+        let indexDaCarta = this.inventario.indexOf('carta1FechadaPeq');
         if(indexDaCarta !== -1)
             this.inventario.splice(indexDaCarta, 1);
         updateIventario(this);
+
+        if(this.mostrouLivro && (this.inventario.indexOf('oUltElixir-dorsoPeq') === -1) ){
+            this.inventario.push('oUltElixir-dorsoPeq');
+            updateIventario(this);
+        }
 
         this.paginaAtual.setTexture('carta1Aberta');
         this.paginaAtual.setVisible(true);
@@ -127,6 +138,12 @@ export default class CenaPulpito extends Phaser.Scene{
         if(indexDoLivro !== -1)
             this.inventario.splice(indexDoLivro, 1);
         updateIventario(this);
+
+        if(this.mostrouCarta && (this.inventario.indexOf('carta1FechadaPeq') === -1)){
+            this.inventario.push('carta1FechadaPeq');
+            updateIventario(this);
+            console.log('carta 1 foi pro inventario');
+        }
 
         this.setaEsq.setVisible(true);
         this.setaDir.setVisible(true);

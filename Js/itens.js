@@ -19,11 +19,14 @@ export default class itens extends Phaser.Physics.Arcade.Sprite {
     }
 
     coletarItem(){
-        this.scene.inventario.push(this.nomeColetavel);
-        this.setVisible(false);
-        updateIventario(this.scene);
-        this.disableBody(true,true);
-        this.scene.gameState.itensColetados[this.nome] = true;
+        //if(this.scene.inventario.indexOf(this.nomeColetavel) === -1){
+            this.scene.inventario.push(this.nomeColetavel);
+            this.setVisible(false);
+            updateIventario(this.scene);
+            this.disableBody(true,true);
+            this.scene.gameState.itensColetados[this.nome] = true;
+       //}
+        
     }
 
 

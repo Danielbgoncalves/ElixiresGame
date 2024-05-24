@@ -67,6 +67,12 @@ export default class CenaPonteiros extends Phaser.Scene{
         // Senha 1: 
         if(this.angulacaoP > 175 && this.angulacaoP < 185 && this.angulacaoG > 265 && this.angulacaoG< 275){
             console.log('acertou');
+
+            /*
+                Agora precisa fazer a recompensa aparecer, talvezz uma tesoura para cortar o galho
+                verde. Ou a chave do diario de poemas dele.
+            */
+
         }
     }
 

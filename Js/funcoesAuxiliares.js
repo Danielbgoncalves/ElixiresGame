@@ -66,8 +66,6 @@ export function clickAnims(cena){
        let clickAnimation = cena.add.sprite(pointer.x, pointer.y, 'seta');
        clickAnimation.setDepth(1);
 
-     
-
         // Reproduza a animação 'clicar'
         clickAnimation.play('clicar');
 
@@ -78,24 +76,3 @@ export function clickAnims(cena){
     }, cena);
 }
 
-/*export class Legiveis {
-    constructor(nome, paginas){
-        this.nome = nome;
-        this.paginas = paginas;
-        this.paginaAtual;
-    }
-
-    proximaPagina(){
-        if(this.paginaAtual < this.paginas.lenthg-1)
-            this.paginaAtual++;
-    }
-
-    paginaAnterior(){
-        if(this.paginaAtual !== 0)
-            this.paginaAtual--;
-    }
-
-    getPagAtual(){
-        return this.paginas[this.paginaAtual]
-    }
-}*/
