@@ -44,6 +44,8 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('mesa1', 'Assets/cenaEstante/mesa1.png');
         this.load.image('caixa1', 'Assets/cenaEstante/caixa1.png');
         this.load.image('livros', 'Assets/cenaEstante/livros.png')
+        this.load.image('portinhas','Assets/cenaEstante/portinhas.png' )
+
 
 
         // CenaPortaRetrato
@@ -73,7 +75,17 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('livro5','Assets/cenaEstante/livro5.png' );
         this.load.image('oUltElixir-dorso', 'Assets/cenaEstante/oUltElixir-dorso.png');
         this.load.image('oUltElixir-dorsoPeq', 'Assets/cenaEstante/oUltElixir-dorsoPeq.png');
-        
+
+        // CenaPortinhas
+        this.load.image('cenaPortinhas','Assets/cenaEstante/cenaPortinhas.png');
+        this.load.image('cenaPortinhasTx2','Assets/cenaEstante/cenaPortinhasTx2.png');
+        this.load.image('simb0', 'Assets/cenaEstante/simb0.png');
+        this.load.image('simb1', 'Assets/cenaEstante/simb1.png');
+        this.load.image('simb2', 'Assets/cenaEstante/simb2.png');
+        this.load.image('simb3', 'Assets/cenaEstante/simb3.png');
+        this.load.image('simb4', 'Assets/cenaEstante/simb4.png');
+        this.load.image('simb5', 'Assets/cenaEstante/simb5.png');
+
 
         // ----------------------CenaEspelho--------------------
         this.load.image('mesa2', 'Assets/cenaEspelho/mesa2.png');
@@ -90,8 +102,11 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('diario-3', 'Assets/cenaEspelho/diario-3.png');
         this.load.image('diario-4', 'Assets/cenaEspelho/diario-4.png');
         this.load.image('escondeEldric', 'Assets/cenaEspelho/escondeEldric.png');
+        this.load.image('fala1', 'Assets/cenaEspelho/fala1.png');
+        this.load.image('fala2', 'Assets/cenaEspelho/fala2.png');
 
-        // CenaSobreMesa3
+
+        // CenaSobreMesa2
         this.load.image('cenaSobreMesa2', 'Assets/cenaEspelho/cenaSobreMesa2.png');
         this.load.image('copo', 'Assets/cenaEspelho/copo.png');
         this.load.image('copoPeq', 'Assets/cenaEspelho/copoPeq.png');
@@ -106,6 +121,8 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('gavetaVAberta-cena3', 'Assets/cenaEspelho/gavetaVAberta-cena3.png');
         this.load.image('carta1Fechada', 'Assets/cenaEspelho/carta1Fechada.png');
         this.load.image('carta1FechadaPeq', 'Assets/cenaEspelho/carta1FechadaPeq.png');
+
+ 
 
 
 
@@ -142,12 +159,14 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('ponteiroP', 'Assets/cenaRelogio/ponteiroP.png' );
         this.load.image('ponteiroG', 'Assets/cenaRelogio/ponteiroG.png' );
         this.load.image('botaoRelogio', 'Assets/cenaRelogio/botaoRelogio.png' );
+        this.load.image('chaveQuadrada', 'Assets/cenaRelogio/chaveQuadrada.png' );
+        this.load.image('portaSecretaRlg', 'Assets/cenaRelogio/portaSecretaRlg.png' );
 
 
-        // Musica
+
+        // ------------------------- Musica -----------------------
         this.load.audio('mainTheme', 'Assets/mainTheme.mp3')
 
-        
 
     }
 }

@@ -10,6 +10,8 @@ import CenaLivros from       './cenasEstante/cenaLivros.js';
 import CenaMesa1 from        './cenasEstante/cenaMesa1.js';
 import CenaCaixa1 from       './cenasEstante/cenaCaixa1.js'
 import CenaRetrato from      './cenasEstante/cenaRetrato.js';
+import CenaPortinhas from    './cenasEstante/cenaPortinhas.js';
+
 
 import CenaEspelho from      './cenasEspelho/cenaEspelho.js';
 import CenaEspelhoMesmo from './cenasEspelho/cenaEspelhoMesmo.js';
@@ -35,7 +37,7 @@ const config = {
             gravity: {
                 y: 0
             },
-            debug: true
+            debug: false
         }
     },
     scene: [
@@ -48,6 +50,7 @@ const config = {
         CenaMesa1,
         CenaCaixa1,
         CenaRetrato,
+        CenaPortinhas,
         CenaEspelho,
         CenaEspelhoMesmo,
         CenaMesa2,

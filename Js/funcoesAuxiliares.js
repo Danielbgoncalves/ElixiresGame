@@ -76,3 +76,9 @@ export function clickAnims(cena){
     }, cena);
 }
 
+export function retiraDoInventario(cena, item){
+    let indexDaVela = cena.inventario.indexOf(item);
+        if(indexDaVela !== -1)
+            cena.inventario.splice(indexDaVela, 1);
+        updateIventario(cena);
+}

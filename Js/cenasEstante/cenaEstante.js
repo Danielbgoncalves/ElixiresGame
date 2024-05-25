@@ -26,18 +26,23 @@ export default class cenaEstante extends Phaser.Scene{
         this.setaDir.setInteractive();
         this.setaDir.angle = 180;
 
-        //retrato
+        // Retrato
         this.portaRetrato = this.add.image(610,260, 'portaRetrato');
         this.portaRetrato.setInteractive();
 
-        //livros
+        // Livros
         this.livros = this.add.image(569, 317, 'livros');
         this.livros.setInteractive();
 
-        //mesinha 
+        // Mesinha 
         this.mesa = this.add.image(195,393, 'mesa1');
         this.mesa.setInteractive();
 
+        // Portinhas
+        this.portinhas = this.add.image(580,440, 'portinhas');
+        this.portinhas.setInteractive();
+
+        
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
@@ -58,6 +63,9 @@ export default class cenaEstante extends Phaser.Scene{
 
         // Clique nos livros
         chamaCena(this.livros, this,'CenaLivros');
+
+        // Clique nas portinhas
+        chamaCena(this.portinhas, this,'CenaPortinhas');
 
     }
 

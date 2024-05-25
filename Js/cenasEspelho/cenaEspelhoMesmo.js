@@ -20,7 +20,11 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         this.add.image(450, 275, 'espelho').setDepth(0.2);
         this.add.image(359, 475, 'escondeEldric').setDepth(0.3);
 
-        let textura;
+        // Fala do Eldric
+        this.fala = this.add.image(350, 30, 'vazio');
+        this.fala.setVisible(false);
+
+        let textura; // textura do Eldric
         if(this.oQueEldricSegura === 'nada')
             textura = 'eldric';
         else if (this.oQueEldricSegura === 'copo')
@@ -65,7 +69,29 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
                 this.mudaSprite(0);
             else if(this.itemClicado === 'galhoPeq')
                 this.mudaSprite(1);
+            else this.eldricFala();
         }
+    }
+
+    eldricFala(){
+        
+        this.sobre = true;
+        this.desce = false;
+
+        if(this.oQueEldricSegura === 'nada'){
+            this.fala.setTexture('fala1');
+
+        } else if (this.oQueEldricSegura === 'copo'){
+            this.fala.setTexture('fala2');
+        }
+
+        this.fala.setVisible(true);
+        this.podeFala = true;
+        
+        this.time.delayedCall(3000, () =>{
+            this.podeFala = false;
+            this.fala.setVisible(false);
+        });
     }
 
     mudaSprite(id){
@@ -78,6 +104,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
 
             this.eldric.setTexture('eldric-seguraCopo');
             this.oQueEldricSegura = 'copo'; 
+
         } else if( id === 1 && this.oQueEldricSegura === 'copo'){
             let indexDaVela = this.inventario.indexOf('galhoPeq');
             if(indexDaVela !== -1)
@@ -93,5 +120,24 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
     update(){
         if(this.eldric.y > 280)
             this.eldric.y -= 1.5;
+
+        if(this.podeFala){
+            
+
+            if(this.sobre) this.fala.y -= 0.1;
+            if(this.desce) this.fala.y += 0.1;
+
+            if(this.fala.y < 28){
+                this.sobre = false;
+                this.desce = true;
+                console.log(this.fala.y);
+            } else if(this.fala.y > 32){
+                this.sobre = true;
+                this.desce = false;
+            }
+
+            console.log(this.fala.y);
+            
+        }
     }
 }

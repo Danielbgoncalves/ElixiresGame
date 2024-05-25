@@ -1,3 +1,4 @@
+import itens from "../itens.js";
 import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaPonteiros extends Phaser.Scene{
@@ -24,12 +25,14 @@ export default class CenaPonteiros extends Phaser.Scene{
         this.ponteiroG = this.add.image(436, 308, 'ponteiroG');
         this.ponteiroG.setInteractive();
         this.ponteiroG.setOrigin(0.5, 0.9);
+        this.angulacaoG = 0;
 
 
         this.ponteiroP = this.add.image(436, 308, 'ponteiroP');
         this.ponteiroP.setInteractive();
         this.ponteiroP.setOrigin(0.5, 0.9);
         this.ponteiroP.angle = 90;
+        this.angulacaoP = 90;
 
         this.ponteiroP.on('pointerdown', () =>{
             this.draggingP = true;
@@ -46,17 +49,19 @@ export default class CenaPonteiros extends Phaser.Scene{
         });
 
         this.add.image(436, 308, 'botaoRelogio');
+        this.portaSecreta = this.add.image(228, 262, 'portaSecretaRlg');
+        this.portaSecreta.setVisible(false);
   
 
         this.seta = this.add.image(450, 520, 'seta');
         this.seta.setInteractive();
         this.seta.angle = 270;
 
-
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
         clickAnims(this);
+        this.acertouSenha1 = false;
 
 
         chamaCena(this.seta, this, 'CenaRelogio');
@@ -65,14 +70,20 @@ export default class CenaPonteiros extends Phaser.Scene{
     verificaCorretude(){
 
         // Senha 1: 
-        if(this.angulacaoP > 175 && this.angulacaoP < 185 && this.angulacaoG > 265 && this.angulacaoG< 275){
-            console.log('acertou');
+        if(this.angulacaoP > 175 && this.angulacaoP < 185 && this.angulacaoG > 265 && this.angulacaoG < 275){
+            this.mostraChaveQuadrada();
+            this.acertouSenha1 = true;
+            this.portaSecreta.setVisible(true);
+        } else {
+            
+        }
+    }
 
-            /*
-                Agora precisa fazer a recompensa aparecer, talvezz uma tesoura para cortar o galho
-                verde. Ou a chave do diario de poemas dele.
-            */
-
+    mostraChaveQuadrada(){
+        if(!this.acertouSenha1){
+            this.chaveQuadrada = new itens(this, 265, 270, 'chaveQuadrada', 'chaveQuadrada');
+                if(this.gameState.itensColetados[this.chaveQuadrada.id])
+                    this.chaveQuadrada.disableBody(true,true);
         }
     }
 
