@@ -62,14 +62,11 @@ export function clickAnims(cena){
     });   
     
     cena.input.on('pointerdown', function (pointer) {
-        // Crie um sprite no local do clique
        let clickAnimation = cena.add.sprite(pointer.x, pointer.y, 'seta');
        clickAnimation.setDepth(1);
 
-        // Reproduza a animação 'clicar'
         clickAnimation.play('clicar');
 
-        // Quando a animação terminar, destrua o sprite
         clickAnimation.on('animationcomplete', function () {
                 clickAnimation.destroy();
         }, cena);

@@ -6,10 +6,23 @@ export default class CenaCarregamento extends Phaser.Scene{
     }
     preload(){
         this.load.on('complete', () => {
-            this.scene.start('CenaPorta');
+            this.scene.start('CenaIntro');
         });
 
-        //---------------------CenaPorta----------------------------------------
+        //-------------------- CenaIntro ---------------------------------
+        //this.load.image('intro-preto', 'Assets/cenaIntro/intro-preto.png');
+        this.load.image('intro-porta', 'Assets/cenaIntro/intro-porta.png');
+        this.load.image('intro-fala1', 'Assets/cenaIntro/intro-fala1.png');
+        this.load.image('intro-fala2', 'Assets/cenaIntro/intro-fala2.png');
+        this.load.image('intro-fala3', 'Assets/cenaIntro/intro-fala3.png');
+        this.load.image('intro-fala4', 'Assets/cenaIntro/intro-fala4.png');
+        this.load.image('intro-fala5', 'Assets/cenaIntro/intro-fala5.png');
+        this.load.image('intro-fala6', 'Assets/cenaIntro/intro-fala6.png');
+        this.load.image('intro-fala7', 'Assets/cenaIntro/intro-fala7.png');
+        this.load.image('intro-fala8', 'Assets/cenaIntro/intro-fala8.png');
+        
+
+        //--------------------- CenaPorta ----------------------------------------
         this.load.image('cena1', 'Assets/cena1c.png');
         this.load.image('vazio', 'Assets/vazio.png');
         this.load.image('seta', 'Assets/seta.png');
@@ -85,6 +98,7 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('simb3', 'Assets/cenaEstante/simb3.png');
         this.load.image('simb4', 'Assets/cenaEstante/simb4.png');
         this.load.image('simb5', 'Assets/cenaEstante/simb5.png');
+        this.load.image('tesoura', 'Assets/cenaEstante/tesoura.png');
 
 
         // ----------------------CenaEspelho--------------------

@@ -1,5 +1,6 @@
 
 import CenaCarregamento from './cenaCarregamento.js';
+import CenaIntro from './cenaIntro.js';
 
 import CenaPorta from        './cenasPorta/cenaPorta.js';
 import CenaGaiola from       './cenasPorta/cenaGaiola.js'
@@ -37,11 +38,12 @@ const config = {
             gravity: {
                 y: 0
             },
-            debug: false
+            debug: true
         }
     },
     scene: [
         CenaCarregamento,
+        CenaIntro,
         CenaPorta,
         CenaGaiola,
         CenaPlantaVerde,
