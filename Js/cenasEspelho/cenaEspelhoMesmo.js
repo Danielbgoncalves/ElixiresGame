@@ -96,7 +96,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
 
     mudaSprite(id){
         console.log('o item clicado é: ', this.itemClicado);
-        if(id === 0){
+        if(id === 0){ // muda para sprite segura agua
            let indexDaVela = this.inventario.indexOf('copoPeq');
             if(indexDaVela !== -1)
                 this.inventario.splice(indexDaVela, 1);
@@ -104,8 +104,9 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
 
             this.eldric.setTexture('eldric-seguraCopo');
             this.oQueEldricSegura = 'copo'; 
+            this.itemClicado = 0;
 
-        } else if( id === 1 && this.oQueEldricSegura === 'copo'){
+        } else if( id === 1 && this.oQueEldricSegura === 'copo'){ // muda para sprite segura cha 
             let indexDaVela = this.inventario.indexOf('galhoPeq');
             if(indexDaVela !== -1)
                 this.inventario.splice(indexDaVela, 1);
@@ -113,6 +114,8 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
 
             this.eldric.setTexture('eldric-seguraCha');
             this.oQueEldricSegura = 'cha'; 
+            this.itemClicado = 0;
+
         }
         
     }

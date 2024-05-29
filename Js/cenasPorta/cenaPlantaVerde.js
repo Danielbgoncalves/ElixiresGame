@@ -1,4 +1,4 @@
-import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario} from "../funcoesAuxiliares.js";
 //import itens from "../itens.js";
 
 export default class CenaPlantaVerde extends Phaser.Scene{
@@ -43,54 +43,34 @@ export default class CenaPlantaVerde extends Phaser.Scene{
             let menorX = 809;
             let maiorX = 877;
 
-            this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
+            verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX); // retorna o valor de this.itemClicado
+            //this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
         });
         
         // Coleta a galho
         this.galho.on('pointerdown', ()=>{
-            if(this.itemClicado = 'tesouraPeq'){
-                this.inventario.push('galhoPeq');
-                this.updateIventario();
-                this.galho.setVisible(false);
-                this.galhoColetado = true;
-            }
+            if(this.itemClicado === 'tesoura') this.atualizaInventario();
         });
+        
 
     }
 
-    inicializaIventarios() {
-        for (let i = 0; i < 6; i++) {
-            let sprite = this.physics.add.image(835, 80 + (i * 80), 'seta').setDepth(1);
-            this.spritesInventario[i] = sprite;
-        }
+    atualizaInventario(){
+        
+        let indexDaVela = this.inventario.indexOf('tesoura');
+        if(indexDaVela !== -1)
+            this.inventario.splice(indexDaVela, 1);
+
+        this.inventario.push('galhoPeq');
+        this.galho.setVisible(false);
+        this.galhoColetado = true;
+        updateIventario(this);
     }
 
-    updateIventario() {
-        for (let i = 0; i < 6; i++) {
-            if (this.inventario[i])
-                this.spritesInventario[i].setTexture(this.inventario[i]);
-            else 
-                this.spritesInventario[i].setTexture('seta');
-        }
-    }
 
-    verificaOndeClicou(mouseX, mouseY,menorX,maiorX){
-        if(mouseX > menorX && mouseX < maiorX){
-            if( mouseY > 48 && mouseY < 116)
-                this.itemClicado = this.inventario[0];
-            else if (mouseY > 48 + 76*1 && mouseY < 116 + 76*1)
-                this.itemClicado = this.inventario[1];
-            else if (mouseY > 48 + 76*2 && mouseY < 116 + 76*2)
-                this.itemClicado = this.inventario[2];
-            else if (mouseY > 48 + 76*3 && mouseY < 116 + 76*3)
-                this.itemClicado = this.inventario[3];
-            else if (mouseY > 48 + 76*4 && mouseY < 116 + 76*4)
-                this.itemClicado = this.inventario[4];
-            else if (mouseY > 48 + 76*5 && mouseY < 116 + 76*5)
-                this.itemClicado = this.inventario[5];
-            else this.itemClicado = 0;
-        } 
-    }
+    /*verificaOndeClicou(mouseX, mouseY,menorX,maiorX){
+        verificaCliqueNoInventario(cena, mouseX, mouseY, menorX, maiorX); // retorna o valor de this.itemClicado
+    }*/
 
     update(){}
 }    

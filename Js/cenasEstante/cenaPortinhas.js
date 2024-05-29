@@ -1,4 +1,5 @@
 import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario, retiraDoInventario} from "../funcoesAuxiliares.js";
+import itens from "../itens.js";
 
 export default class CenaPortinhas extends Phaser.Scene{
     constructor(){
@@ -56,7 +57,7 @@ export default class CenaPortinhas extends Phaser.Scene{
             let menorX = 809;
             let maiorX = 877;
 
-            //console.log('x: ', mouseX, 'y: ', mouseY);
+           // console.log('x: ', mouseX, 'y: ', mouseY);
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
              
         });
@@ -120,7 +121,7 @@ export default class CenaPortinhas extends Phaser.Scene{
     clicouNoSimb(simb){
         simb.on('pointerdown', () =>{
             simb.id++;
-            if(simb.id === 6) simb.id = 1;
+            if(simb.id === 6) simb.id = 0;
 
             simb.setTexture(this.vecDeImagens[simb.id]);
             this.verificaCorretude();
@@ -128,9 +129,12 @@ export default class CenaPortinhas extends Phaser.Scene{
     }
     
     verificaCorretude(){
-        console.log(this.um.id, this.dois.id, this.tres.id, this.qua.id);
+        //console.log(this.um.id, this.dois.id, this.tres.id, this.qua.id);
         if(this.um.id === 0 && this.dois.id === 0 && this.tres.id === 0 && this.qua.id === 1){
-            console.log('apareceu o item');
+            // Mostra o item a ser coletado 
+            this.tesoura = new itens(this, 485, 345, 'tesoura', 'tesoura');
+                if(this.gameState.itensColetados[this.tesoura.id])
+                    this.tesoura.disableBody(true,true);
         }
     }
     
