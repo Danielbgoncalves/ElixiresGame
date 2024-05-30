@@ -135,6 +135,8 @@ export default class CenaPortinhas extends Phaser.Scene{
             this.tesoura = new itens(this, 485, 345, 'tesoura', 'tesoura');
                 if(this.gameState.itensColetados[this.tesoura.id])
                     this.tesoura.disableBody(true,true);
+
+            this.gameState.mostraSenhaDaVela = false;
         }
     }
     

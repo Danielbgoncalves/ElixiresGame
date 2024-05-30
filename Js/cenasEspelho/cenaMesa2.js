@@ -149,7 +149,7 @@ export default class CenaMesa2 extends Phaser.Scene{
     }
 
     mostraCarta(){
-        this.podeMostrarCinzas = true;
+        this.podeMostrarCarta = true;
         this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
         this.carta1Fechada.setDepth(0.1);
         this.carta1Fechada.angle = 90;
@@ -159,7 +159,7 @@ export default class CenaMesa2 extends Phaser.Scene{
     }
 
     mostraCinzas(){
-        this.podeMostrarCarta = true;
+        this.podeMostrarCinzas = true;
         this.cinzas = new itens(this, 480, 200, 'cinzas', 'cinzas');
         this.cinzas.setDepth(0.2);
         if(this.gameState.itensColetados[this.cinzas.id])

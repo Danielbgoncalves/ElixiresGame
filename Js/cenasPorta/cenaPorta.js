@@ -8,7 +8,8 @@ export default class CenaPorta extends Phaser.Scene{
         });
         this.primeiraVez = true;
         this.gameState = {
-            itensColetados: {}
+            itensColetados: {},
+            mostraSenhaDaVela: false
         };
        
     }
@@ -61,9 +62,6 @@ export default class CenaPorta extends Phaser.Scene{
         if(this.gameState.itensColetados[this.pedacoFoto1.id])
             this.pedacoFoto1.disableBody(true,true);
 
-       
-
-
         
         // Setas
         chamaCena(this.setaEsq, this ,'CenaRelogio');
@@ -74,6 +72,12 @@ export default class CenaPorta extends Phaser.Scene{
 
         // Planta verde
         chamaCena(this.plantaVerde, this  ,'CenaPlantaVerde');
+
+        //temporario
+        this.cinzas = new itens(this, 480, 200, 'cinzas', 'cinzas');
+        this.cinzas.setDepth(0.2);
+        if(this.gameState.itensColetados[this.cinzas.id])
+            this.cinzas.disableBody(true,true);
 
         
 

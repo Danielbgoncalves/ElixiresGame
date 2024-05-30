@@ -48,7 +48,7 @@ export default class CenaVela extends Phaser.Scene{
         this.anims.create({
             key: 'subir',
             frames: this.anims.generateFrameNumbers('explosao', { start: 0, end: 9}),
-            frameRate: 10,
+            frameRate: 15,
             repeat: 0 
         });
 
@@ -58,21 +58,29 @@ export default class CenaVela extends Phaser.Scene{
             this.animacaoFumaca1.destroy();
         });
 
-        
+        this.cu = false;
+        this.anims.create({
+            key: 'aparecer',
+            frames: this.anims.generateFrameNumbers('fumaca-senha', {start: 0, end: 2}),
+            frameRate: 5,
+            repeat: -1
+        });
 
+        this.fumacaSenhaAnims = this.physics.add.sprite(408, 200, 'vazio');
+        //if(this.cu) this.fumacaSenhaAnims.play('aparecer');
+
+        if(this.gameState.mostraSenhaDaVela) this.mostraSenha();
         
 
         // Detecta o clique na tela
-        this.input.on('pointerdown',()=>{
+        this.input.on('pointerdown',() =>{
             let mouseX = this.input.activePointer.x;
             let mouseY = this.input.activePointer.y;
             let menorX = 809;
             let maiorX = 877;
             
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
-        });
-
-        
+        });       
     }
 
     verificaOndeClicou(mouseX, mouseY,menorX,maiorX){
@@ -84,6 +92,7 @@ export default class CenaVela extends Phaser.Scene{
                 this.colocaOvo();
             } else if (this.itemClicado == 'cinzas'){
                 this.mostraFumaca();
+                this.mostraSenha();
             }
         }
     }
@@ -123,13 +132,21 @@ export default class CenaVela extends Phaser.Scene{
 
     mostraFumaca(){
         retiraDoInventario(this, 'cinzas');
+        this.gameState.mostraSenhaDaVela = true;
         this.animacaoFumaca1.play('subir');
         //this.animacaoFumaca1.destroy();
     }
 
+    mostraSenha(){
+        this.fumacaSenhaAnims.play('aparecer');
+    }
+
     
     update(){
-        
+        /*if(this.cu ){
+            this.fumacaSenhaAnims.play('aparecer');
+
+        }*/
     }
 
 }
