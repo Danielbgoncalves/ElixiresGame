@@ -6,7 +6,7 @@ export default class CenaCarregamento extends Phaser.Scene{
     }
     preload(){
         this.load.on('complete', () => {
-            this.scene.start('CenaIntro');
+            this.scene.start('CenaPorta');
         });
 
         //-------------------- CenaIntro ---------------------------------
@@ -135,6 +135,9 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('gavetaVAberta-cena3', 'Assets/cenaEspelho/gavetaVAberta-cena3.png');
         this.load.image('carta1Fechada', 'Assets/cenaEspelho/carta1Fechada.png');
         this.load.image('carta1FechadaPeq', 'Assets/cenaEspelho/carta1FechadaPeq.png');
+        this.load.image('cinzas', 'Assets/cenaEspelho/cinzas.png');
+
+
 
  
 
@@ -162,6 +165,9 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.spritesheet('sprite-vela', 'Assets/cenaRelogio/sprite-vela.png', {frameWidth:13, frameHeight: 33});
         this.load.image('chaveCinza', 'Assets/cenaRelogio/chaveCinza.png' );
         this.load.image('chaveCinzaPeq', 'Assets/cenaRelogio/chaveCinzaPeq.png' );
+        //this.load.spritesheet('fumaca1', 'Assets/cenaRelogio/fumaca1.png', {frameWidth:30, frameHeight: 180});
+        this.load.spritesheet('explosao', 'Assets/cenaRelogio/explosaoG1.png', {frameWidth:210, frameHeight: 180});
+
 
         //CenaMesa3
         this.load.image('cenaMesa3', 'Assets/cenaRelogio/cenaMesa3.png' );

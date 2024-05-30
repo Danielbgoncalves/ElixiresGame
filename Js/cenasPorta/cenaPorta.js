@@ -31,8 +31,12 @@ export default class CenaPorta extends Phaser.Scene{
         this.cameras.main.fadeIn(400, 0, 0, 0);
         this.add.image(450, 275, 'cena1' );
 
-        this.sys.game.music = this.sound.add('mainTheme');
-        this.sys.game.music.play({ loop: true });
+        //this.sys.game.music = this.sound.add('mainTheme');
+        //this.sys.game.music.play({ loop: true });
+
+        let musica = this.sound.add('mainTheme', { volume: 1, loop: true });
+        musica.play();
+
 
         //setas
         this.setaEsq = this.add.image(20, 275, 'seta');
@@ -57,10 +61,9 @@ export default class CenaPorta extends Phaser.Scene{
         if(this.gameState.itensColetados[this.pedacoFoto1.id])
             this.pedacoFoto1.disableBody(true,true);
 
+       
 
-        this.pedacoFoto4 = new itens(this, 450, 300, 'fotoPeq4', 'fotoPeq4');
-        if(this.gameState.itensColetados[this.pedacoFoto4.id])
-            this.pedacoFoto4.disableBody(true,true);
+
         
         // Setas
         chamaCena(this.setaEsq, this ,'CenaRelogio');

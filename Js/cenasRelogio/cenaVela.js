@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena,verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena,verificaCliqueNoInventario, clickAnims, retiraDoInventario} from "../funcoesAuxiliares.js";
 
 export default class CenaVela extends Phaser.Scene{
     constructor(){
@@ -45,6 +45,23 @@ export default class CenaVela extends Phaser.Scene{
         this.animacaoVela = this.physics.add.sprite(408, 286, 'seta');
         this.animacaoVela.play('bruxelear');
 
+        this.anims.create({
+            key: 'subir',
+            frames: this.anims.generateFrameNumbers('explosao', { start: 0, end: 9}),
+            frameRate: 10,
+            repeat: 0 
+        });
+
+        this.animacaoFumaca1 = this.physics.add.sprite(408, 190, 'vazio');
+
+        this.animacaoFumaca1.on('animationcomplete', () => {
+            this.animacaoFumaca1.destroy();
+        });
+
+        
+
+        
+
         // Detecta o clique na tela
         this.input.on('pointerdown',()=>{
             let mouseX = this.input.activePointer.x;
@@ -65,6 +82,8 @@ export default class CenaVela extends Phaser.Scene{
          if(mouseX > 136 && mouseY > 244 && mouseX < 768 && mouseY < 498 ) {
             if(this.itemClicado == 'ovo1'){
                 this.colocaOvo();
+            } else if (this.itemClicado == 'cinzas'){
+                this.mostraFumaca();
             }
         }
     }
@@ -100,6 +119,12 @@ export default class CenaVela extends Phaser.Scene{
         this.chaveCinza.setDepth(1);
         if(this.gameState.itensColetados[this.chaveCinza.id])
             this.chaveCinza.disableBody(true,true);
+    }
+
+    mostraFumaca(){
+        retiraDoInventario(this, 'cinzas');
+        this.animacaoFumaca1.play('subir');
+        //this.animacaoFumaca1.destroy();
     }
 
     

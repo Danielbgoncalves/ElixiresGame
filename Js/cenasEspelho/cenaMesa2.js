@@ -10,6 +10,9 @@ export default class CenaMesa2 extends Phaser.Scene{
         this.gavCDestrancada = false;
         this.gavADestrancada = false;
 
+        this.podeMostrarCarta = false;
+         this.podeMostrarCinzas = false;
+
     }
 
 
@@ -59,6 +62,8 @@ export default class CenaMesa2 extends Phaser.Scene{
                 verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX)
 
         });
+
+     
     }
 
 
@@ -101,6 +106,8 @@ export default class CenaMesa2 extends Phaser.Scene{
             } else if(gaveta === this.gavCA){
                 gaveta.setVisible(false);
                 this.gavCF.setVisible(true);
+                if(this.cinzas)
+                    this.cinzas.disableBody(true,true);
 
             } else if(gaveta === this.gavAF && ( this.itemClicado === 'chaveAmarela' || this.gavADestrancada)){
                 this.abreGaveta(gaveta, this.gavAA, 'chaveAmarela');
@@ -119,14 +126,18 @@ export default class CenaMesa2 extends Phaser.Scene{
         gavetaA.setVisible(false);
         gavetaB.setVisible(true);
 
-        if(chave === 'chaveVerdePeq')
+        if(chave === 'chaveVerdePeq'){
             this.gavVDestrancada = true;
-        else if(chave === 'chaveVerdePeq')
+        } else if(chave === 'chaveCinzaPeq' || this.podeMostrarCinzas){
             this.gavCDestrancada = true;
-        else if(chave == 'chaveAmarela')
+            this.mostraCinzas();
+        } else if(chave == 'chaveAmarela' || this.podeMostrarCarta){
             this.gavADestrancada = true;
+            this.mostraCarta();
+        }
+            
         
-        this.mostraOItem(this.itemClicado);
+       // this.mostraOItem(this.itemClicado);
 
         // Apagua o item do inventário
         let indexDoItem = this.inventario.indexOf(this.itemClicado);
@@ -137,16 +148,34 @@ export default class CenaMesa2 extends Phaser.Scene{
 
     }
 
-    mostraOItem(item){
-        if(item === 'chaveAmarela'){
-            this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
-            this.carta1Fechada.setDepth(0.1);
-            this.carta1Fechada.angle = 90;
-            if(this.gameState.itensColetados[this.carta1Fechada.id])
-                this.carta1Fechada.disableBody(true,true);
+    mostraCarta(){
+        this.podeMostrarCinzas = true;
+        this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
+        this.carta1Fechada.setDepth(0.1);
+        this.carta1Fechada.angle = 90;
+        if(this.gameState.itensColetados[this.carta1Fechada.id])
+            this.carta1Fechada.disableBody(true,true);
+        
+    }
+
+    mostraCinzas(){
+        this.podeMostrarCarta = true;
+        this.cinzas = new itens(this, 480, 200, 'cinzas', 'cinzas');
+        this.cinzas.setDepth(0.2);
+        if(this.gameState.itensColetados[this.cinzas.id])
+            this.cinzas.disableBody(true,true);
+    }
+
+    /*mostraOItem(item){
+          if(item === 'chaveCinzaPeq' || this.podeMostrarCinzas){
+            this.podeMostrarCarta = true;
+            this.cinzas = new itens(this, 480, 200, 'cinzas', 'cinzas');
+            this.cinzas.setDepth(0.2);
+            if(this.gameState.itensColetados[this.cinzas.id])
+                this.cinzas.disableBody(true,true);
         }
 
-    }
+    }*/
 
     update(){}
 }

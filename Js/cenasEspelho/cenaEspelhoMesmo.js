@@ -1,3 +1,4 @@
+import itens from "../itens.js";
 import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
 
 export default class CenaEspelhoMesmo extends Phaser.Scene{
@@ -19,6 +20,13 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         this.add.image(450, 275, 'cenaEspelhoMesmo');
         this.add.image(450, 275, 'espelho').setDepth(0.2);
         this.add.image(359, 475, 'escondeEldric').setDepth(0.3);
+
+        // Pedaço das fotos
+        this.pedacoFoto4 = new itens(this, 76, 80, 'fotoPeq4', 'fotoPeq4');
+        if(this.gameState.itensColetados[this.pedacoFoto4.id])
+            this.pedacoFoto4.disableBody(true,true);
+
+
 
         // Fala do Eldric
         this.fala = this.add.image(350, 30, 'vazio');
