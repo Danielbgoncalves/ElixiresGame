@@ -52,12 +52,12 @@ export default class CenaCarregamento extends Phaser.Scene{
 
         //--------------------CenaEstante-------------------------------------
         this.load.image('cena2', 'Assets/cena2c.png');
-        this.load.image('portaRetrato', 'Assets/retratoClicavel.png')
+        this.load.image('portaRetrato', 'Assets/retratoClicavel.png');
         this.load.image('cenaMesa1', 'Assets/cenaEstante/cenaMesa1.png');
         this.load.image('mesa1', 'Assets/cenaEstante/mesa1.png');
         this.load.image('caixa1', 'Assets/cenaEstante/caixa1.png');
-        this.load.image('livros', 'Assets/cenaEstante/livros.png')
-        this.load.image('portinhas','Assets/cenaEstante/portinhas.png' )
+        this.load.image('livros', 'Assets/cenaEstante/livros.png');
+        this.load.image('portinhas','Assets/cenaEstante/portinhas.png' );
 
 
 
@@ -89,7 +89,7 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('oUltElixir-dorso', 'Assets/cenaEstante/oUltElixir-dorso.png');
         this.load.image('oUltElixir-dorsoPeq', 'Assets/cenaEstante/oUltElixir-dorsoPeq.png');
 
-        // CenaPortinhas
+        // CenaPortinhas   cenaPortinhas
         this.load.image('cenaPortinhas','Assets/cenaEstante/cenaPortinhas.png');
         this.load.image('cenaPortinhasTx2','Assets/cenaEstante/cenaPortinhasTx2.png');
         this.load.image('simb0', 'Assets/cenaEstante/simb0.png');

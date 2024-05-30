@@ -103,7 +103,6 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
     }
 
     mudaSprite(id){
-        console.log('o item clicado é: ', this.itemClicado);
         if(id === 0){ // muda para sprite segura agua
            let indexDaVela = this.inventario.indexOf('copoPeq');
             if(indexDaVela !== -1)
@@ -133,7 +132,6 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             this.eldric.y -= 1.5;
 
         if(this.podeFala){
-            
 
             if(this.sobre) this.fala.y -= 0.1;
             if(this.desce) this.fala.y += 0.1;
@@ -141,14 +139,11 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             if(this.fala.y < 28){
                 this.sobre = false;
                 this.desce = true;
-                console.log(this.fala.y);
             } else if(this.fala.y > 32){
                 this.sobre = true;
                 this.desce = false;
             }
-
-            console.log(this.fala.y);
-            
+          
         }
     }
 }
