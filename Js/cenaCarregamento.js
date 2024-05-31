@@ -167,6 +167,8 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('comida-corvo', 'Assets/cenaRelogio/comida-corvo.png' );
         this.load.image('comida-corvoPeq', 'Assets/cenaRelogio/comida-corvoPeq.png' );
         this.load.image('carta1Aberta', 'Assets/cenaRelogio/carta1Aberta.png' );
+        this.load.image('borradoLivros', 'Assets/cenaRelogio/borradoLivros.png' );
+        this.load.image('borradoPonteiros', 'Assets/cenaRelogio/borradoPonteiros.png' );
 
         // CenaVela
         this.load.image('cenaVela', 'Assets/cenaRelogio/cenaVela.png' );

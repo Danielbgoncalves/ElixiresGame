@@ -80,6 +80,7 @@ export default class CenaPonteiros extends Phaser.Scene{
     }
 
     mostraChaveQuadrada(){
+        this.gameState.borraPonterios = true;
         if(!this.acertouSenha1){
             this.chaveQuadrada = new itens(this, 265, 270, 'chaveQuadrada', 'chaveQuadrada');
                 if(this.gameState.itensColetados[this.chaveQuadrada.id])

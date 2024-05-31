@@ -105,6 +105,7 @@ export default class CenaLivros extends Phaser.Scene{
     }
 
     mostraLivro(){
+        this.gameState.borraLivros = true;
         this.pedacoFoto1 = new itens(this, 570, 295, 'oUltElixir-dorso', 'oUltElixir-dorsoPeq');
         if(this.gameState.itensColetados[this.pedacoFoto1.id])
             this.pedacoFoto1.disableBody(true,true);

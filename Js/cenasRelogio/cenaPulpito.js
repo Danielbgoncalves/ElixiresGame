@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena, clickAnims} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims } from "../funcoesAuxiliares.js";
 
 export default class CenaPulpito extends Phaser.Scene{
     constructor(){
@@ -64,12 +64,20 @@ export default class CenaPulpito extends Phaser.Scene{
             let menorX = 809;
             let maiorX = 877;
 
-           // console.log('x: ', mouseX);
+            console.log('x: ', mouseX, 'y: ', mouseY);
+            console.log(this.gameState.borraPonterios);
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
         });
 
         if(this.mostrouLivro) this.mostraPaginasDoLivro(0);
         if(this.mostrouCarta) this.mostraCarta();
+
+        this.ponteirosBorrados = this.add.image(553, 437, 'borradoPonteiros');
+        this.ponteirosBorrados.setVisible(false);
+        this.livrosBorrados = this.add.image(430, 293, 'borradoLivros');
+        this.livrosBorrados.setVisible(false);
+
+        if(this.gameState.borraPonterios && this.gameState.borraLivros) this.apagaCarta();
 
     }
 
@@ -130,6 +138,20 @@ export default class CenaPulpito extends Phaser.Scene{
 
         this.paginaAtual.setTexture('carta1Aberta');
         this.paginaAtual.setVisible(true);
+
+        
+    }
+
+    apagaCarta(){
+        this.tweens.add({
+            targets: this.paginaAtual,
+            alpha: { start: 1, to: 0.4 },
+            duration: 500,
+            ease: 'Linear',
+            repeat: 5, // Repete infinitamente
+            yoyo: true // Faz o valor de alpha ir e voltar
+        });
+        this.paginaAtual.setVisible(false); // rever pq nao esta de fato sumindo  <----------------
     }
 
     mostraPaginasDoLivro(sum){
@@ -177,5 +199,19 @@ export default class CenaPulpito extends Phaser.Scene{
         });
     }
 
-    update(){ }
+    update(){
+        if(this.gameState.borraPonterios && this.mostrouCarta ){
+            this.ponteirosBorrados.setVisible(true);
+        } 
+         
+        if( this.gameState.borraLivros && this.mostrouCarta){
+            this.livrosBorrados.setVisible(true);
+        }
+
+        if( !this.mostrouCarta ){
+            this.ponteirosBorrados.setVisible(false);
+            this.livrosBorrados.setVisible(false);
+        }
+
+     } 
 }
