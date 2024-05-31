@@ -15,7 +15,6 @@ export default class CenaRelogio extends Phaser.Scene{
     }
     
     preload(){
-        this.load.image('cena4', 'Assets/cena4c.png');
     }
 
     create(){

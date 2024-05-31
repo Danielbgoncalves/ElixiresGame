@@ -58,9 +58,9 @@ export default class CenaPorta extends Phaser.Scene{
         clickAnims(this);
 
         // Ítem pegável
-        this.pedacoFoto1 = new itens(this, 450, 300, 'fotoPeq1', 'fotoPeq1');
-        if(this.gameState.itensColetados[this.pedacoFoto1.id])
-            this.pedacoFoto1.disableBody(true,true);
+        this.semente = new itens(this, 408, 250, 'sementeComLinha', 'semente');
+        if(this.gameState.itensColetados[this.semente.id])
+            this.semente.disableBody(true,true)
 
         
         // Setas
@@ -74,10 +74,7 @@ export default class CenaPorta extends Phaser.Scene{
         chamaCena(this.plantaVerde, this  ,'CenaPlantaVerde');
 
         //temporario
-        this.cinzas = new itens(this, 480, 200, 'cinzas', 'cinzas');
-        this.cinzas.setDepth(0.2);
-        if(this.gameState.itensColetados[this.cinzas.id])
-            this.cinzas.disableBody(true,true);
+        
 
         
 

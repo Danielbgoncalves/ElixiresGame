@@ -1,5 +1,5 @@
 import itens from "../itens.js";
-import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims} from "../funcoesAuxiliares.js";
+import {inicializaIventarios, updateIventario, chamaCena, verificaCliqueNoInventario, clickAnims, retiraDoInventario} from "../funcoesAuxiliares.js";
 
 export default class CenaEspelhoMesmo extends Phaser.Scene{
     constructor(){
@@ -7,6 +7,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             key: 'CenaEspelhoMesmo'
         });
         this.oQueEldricSegura = 'nada'
+        this.jaBebeu = false;
     }
 
 
@@ -39,6 +40,10 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             textura = 'eldric-seguraCopo';
         else if (this.oQueEldricSegura === 'cha')
             textura = 'eldric-seguraCha';
+        else if (this.oQueEldricSegura === 'linha')
+            textura = 'eldric-linha';
+        else if (this.oQueEldricSegura === 'linhaG')
+            textura = 'eldric-linhaG';
 
         this.eldric = this.add.image(360, 350, textura);
 
@@ -74,9 +79,17 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
 
          if(mouseX > 79 && mouseY > 87 && mouseX < 640 && mouseY < 400 ) {
             if(this.itemClicado === 'copoPeq')
-                this.mudaSprite(0);
-            else if(this.itemClicado === 'galhoPeq')
                 this.mudaSprite(1);
+            else if(this.itemClicado === 'galhoPeq')
+                this.mudaSprite(2);
+            else if( this.itemClicado === 0 && this.oQueEldricSegura === 'cha')
+                this.mudaSprite(3);
+            else if( this.oQueEldricSegura === 'linha')
+                this.mudaSprite(4);
+            else if( this.oQueEldricSegura === 'linhaG'){
+                this.mudaSprite(0);
+                this.mostraSemente();
+            }
             else this.eldricFala();
         }
     }
@@ -86,7 +99,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         this.sobre = true;
         this.desce = false;
 
-        if(this.oQueEldricSegura === 'nada'){
+        if(this.oQueEldricSegura === 'nada' && !this.jaBebeu){
             this.fala.setTexture('fala1');
 
         } else if (this.oQueEldricSegura === 'copo'){
@@ -103,28 +116,44 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
     }
 
     mudaSprite(id){
-        if(id === 0){ // muda para sprite segura agua
-           let indexDaVela = this.inventario.indexOf('copoPeq');
-            if(indexDaVela !== -1)
-                this.inventario.splice(indexDaVela, 1);
-            updateIventario(this);
+        if(id === 0){ // muda para o normal, sem segurar nada
+            this.eldric.setTexture('eldric');
+            this.oQueEldricSegura = 'nada'; 
+            this.itemClicado = 0;
+
+        } else if(id === 1){ // muda para sprite segura agua
+            retiraDoInventario(this, 'copoPeq');
 
             this.eldric.setTexture('eldric-seguraCopo');
             this.oQueEldricSegura = 'copo'; 
             this.itemClicado = 0;
 
-        } else if( id === 1 && this.oQueEldricSegura === 'copo'){ // muda para sprite segura cha 
-            let indexDaVela = this.inventario.indexOf('galhoPeq');
-            if(indexDaVela !== -1)
-                this.inventario.splice(indexDaVela, 1);
-            updateIventario(this);
+        } else if( id === 2 && this.oQueEldricSegura === 'copo'){ // muda para sprite segura cha 
+            retiraDoInventario(this, 'galhoPeq');
 
             this.eldric.setTexture('eldric-seguraCha');
             this.oQueEldricSegura = 'cha'; 
             this.itemClicado = 0;
 
+        } else if(id === 3){
+            this.eldric.setTexture('eldric-linha');
+            this.oQueEldricSegura = 'linha';
+            this.jaBebeu = true; 
+            this.itemClicado = 0;
+
+        } else if(id === 4){
+            this.eldric.setTexture('eldric-linhaG');
+            this.oQueEldricSegura = 'linhaG'; 
+            this.itemClicado = 0;
+
         }
         
+    }
+
+    mostraSemente(){
+        this.semente = new itens(this, 408, 250, 'sementeComLinha', 'semente');
+        if(this.gameState.itensColetados[this.semente.id])
+            this.semente.disableBody(true,true)
     }
 
     update(){

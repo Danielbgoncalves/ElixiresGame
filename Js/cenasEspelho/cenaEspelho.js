@@ -14,7 +14,6 @@ export default class cenaEspelho extends Phaser.Scene{
     }
 
     preload(){
-            this.load.image('cena3', 'Assets/cena3c.png');
     }
     
     create(){
@@ -40,6 +39,12 @@ export default class cenaEspelho extends Phaser.Scene{
         this.mesa2 = this.add.image(417, 410, 'mesa2');
         this.mesa2.setInteractive();
         chamaCena(this.mesa2, this, 'CenaMesa2');
+
+        // Vaso
+        this.vaso = this.add.image(678, 460, 'vaso');
+        this.vaso.setInteractive();
+        chamaCena(this.vaso, this, 'CenaVaso');
+
 
         this.input.on('pointerdown', ()=> {
             let mouseX = this.input.activePointer.x;

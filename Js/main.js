@@ -16,8 +16,9 @@ import CenaPortinhas from    './cenasEstante/cenaPortinhas.js';
 
 import CenaEspelho from      './cenasEspelho/cenaEspelho.js';
 import CenaEspelhoMesmo from './cenasEspelho/cenaEspelhoMesmo.js';
-import CenaMesa2 from        './cenasEspelho/cenaMesa2.js'
+import CenaMesa2 from        './cenasEspelho/cenaMesa2.js';
 import CenaSobreMesa2 from   './cenasEspelho/cenaSobreMesa2.js';
+import CenaVaso from         './cenasEspelho/cenaVaso.js';
 
 
 import CenaRelogio from      './cenasRelogio/cenaRelogio.js';
@@ -57,6 +58,7 @@ const config = {
         CenaEspelhoMesmo,
         CenaMesa2,
         CenaSobreMesa2,
+        CenaVaso,
         CenaRelogio,
         CenaPulpito,
         CenaVela,

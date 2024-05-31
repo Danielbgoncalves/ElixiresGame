@@ -11,7 +11,7 @@ export function chamaCena(objeto, cenaOrigem, cenaDestino){
 
 export function inicializaIventarios(cena) {
     for (let i = 0; i < 6; i++) {
-        let sprite = cena.physics.add.image(835, 80 + (i * 80), 'seta').setDepth(1);
+        let sprite = cena.physics.add.image(835, 80 + (i * 80), 'vazio').setDepth(1);
         cena.spritesInventario[i] = sprite;
     }
 }
@@ -21,7 +21,7 @@ export function updateIventario(cena) {
         if (cena.inventario[i])
             cena.spritesInventario[i].setTexture(cena.inventario[i]);
         else 
-            cena.spritesInventario[i].setTexture('seta');
+            cena.spritesInventario[i].setTexture('vazio');
     }
 }
 
