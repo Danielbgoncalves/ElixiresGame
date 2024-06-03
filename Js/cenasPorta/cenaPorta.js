@@ -11,7 +11,8 @@ export default class CenaPorta extends Phaser.Scene{
             itensColetados: {},
             mostraSenhaDaVela: false,
             borraPonterios: false,
-            borraLivros: false
+            borraLivros: false,
+            tx2NaCena3: false
         };
        
     }
@@ -60,9 +61,9 @@ export default class CenaPorta extends Phaser.Scene{
         clickAnims(this);
 
         // Ítem pegável
-        this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
+        /*this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
         if(this.gameState.itensColetados[this.carta1Fechada.id])
-            this.carta1Fechada.disableBody(true,true);
+            this.carta1Fechada.disableBody(true,true);*/
 
         
         // Setas

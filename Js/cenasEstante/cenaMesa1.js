@@ -11,10 +11,18 @@ export default class cenaMesa1 extends Phaser.Scene{
         this.inventario = data.inventario;
         this.gameState = data.gameState;
     }
+    
     preload(){}
 
     create(){
         this.add.image(450, 275, 'cenaMesa1');
+
+        /*this.obs = this.add.image(450, 275, 'obstaculos');
+        this.obs.setInteractive();
+
+        this.obs.on('pointerdown', () =>{
+            console.log('encostou');
+        });*/
 
         // caixa1
         this.caixa = this.add.image(532, 240, 'caixa1');

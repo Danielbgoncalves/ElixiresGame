@@ -13,12 +13,12 @@ export default class cenaEspelho extends Phaser.Scene{
         this.gameState = data.gameState;
     }
 
-    preload(){
-    }
+    preload(){}
     
     create(){
         this.cameras.main.fadeIn(400, 0, 0, 0);
-        this.add.image(450, 275, 'cena3' );
+        this.fundo = this.add.image(450, 275, 'cena3' );
+        if(this.gameState.tx2NaCena3) this.fundo.setTexture('cena3Tx2');
 
         this.setaEsq = this.add.image(20, 275, 'seta');
         this.setaEsq.setInteractive();
@@ -42,7 +42,7 @@ export default class cenaEspelho extends Phaser.Scene{
 
         // Vaso
         this.vaso = this.add.image(678, 460, 'vaso');
-        this.vaso.setInteractive();
+        if(!this.gameState.tx2NaCena3) this.vaso.setInteractive();
         chamaCena(this.vaso, this, 'CenaVaso');
 
 

@@ -69,7 +69,15 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('fundoPortaRetrato', 'Assets/fundoPortaRetrato.png');
         this.load.image('chaveAmarela', 'Assets/chaveAmarela.png');
 
-        // CenaMesa1
+        // DesafioFilho
+        this.load.image('desafio-fundo', 'Assets/cenaEstante/desafioFilho/desafio-fundo.png');
+        this.load.image('obstaculo', 'Assets/cenaEstante/desafioFilho/obstaculo.png');
+        this.load.image('eldricPalito', 'Assets/cenaEstante/desafioFilho/eldricPalito.png');
+        this.load.image('desafio-seta', 'Assets/cenaEstante/desafioFilho/desafio-seta.png');
+        this.load.image('desafio-filho', 'Assets/cenaEstante/desafioFilho/desafio-filho.png');
+
+
+
 
         // cenaCaixa1
         this.load.image('cenaCaixa1-fechada', 'Assets/cenaEstante/cenaCaixa1-fechada.png');
@@ -147,6 +155,7 @@ export default class CenaCarregamento extends Phaser.Scene{
 
         // CenaVaso
         this.load.image('cenaVaso', 'Assets/cenaEspelho/cenaVaso.png');
+        this.load.image('chaveMesa1', 'Assets/cenaEspelho/chaveMesa1.png');
 
 
 

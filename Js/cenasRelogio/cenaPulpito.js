@@ -18,6 +18,14 @@ export default class CenaPulpito extends Phaser.Scene{
         this.gameState = data.gameState;
     }
 
+    /*
+        É necessario mudar muita coisa aqui, só vai poder colocar o livro vermelho se a carta já tiver 
+        sumido. 
+        Precisa consertar os rasbiscos que quando tirar a carta as vezes eles continuam mas isso nem 
+        vai ser problema pq a carta nao vai mais sair.
+    */
+
+
     create(){
         this.cameras.main.fadeIn(400, 0, 0, 0);
         this.add.image(450, 275, 'cenaPulpito');
@@ -50,7 +58,7 @@ export default class CenaPulpito extends Phaser.Scene{
         clickAnims(this);
 
         // Configuração das paginas do livro 
-        this.paginaAtual = this.add.image(450, 275, 'oUltElixir-0');
+        this.paginaAtual = this.physics.add.image(450, 275, 'oUltElixir-0');
         this.paginaAtual.setVisible(false);
 
         for(let i = 0; i < 5; i++){
@@ -148,10 +156,15 @@ export default class CenaPulpito extends Phaser.Scene{
             alpha: { start: 1, to: 0.4 },
             duration: 500,
             ease: 'Linear',
-            repeat: 5, // Repete infinitamente
-            yoyo: true // Faz o valor de alpha ir e voltar
+            repeat: 5, 
+            yoyo: true 
         });
+
         this.paginaAtual.setVisible(false); // rever pq nao esta de fato sumindo  <----------------
+        this.paginaAtual.disableBody(true,true);
+        this.ponteirosBorrados.setVisible(false);
+        this.livrosBorrados.setVisible(false);
+
     }
 
     mostraPaginasDoLivro(sum){
@@ -161,7 +174,7 @@ export default class CenaPulpito extends Phaser.Scene{
             this.inventario.splice(indexDoLivro, 1);
         updateIventario(this);
 
-        if(this.mostrouCarta && (this.inventario.indexOf('carta1FechadaPeq') === -1)){
+        if(this.mostrouCarta && (this.inventario.indexOf('carta1FechadaPeq') === -1) && !this.gameState.this.gameState.borraPonterios && !this.gameState.borraLivros){
             this.inventario.push('carta1FechadaPeq');
             updateIventario(this);
             console.log('carta 1 foi pro inventario');
