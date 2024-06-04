@@ -45,6 +45,11 @@ export default class cenaEspelho extends Phaser.Scene{
         if(!this.gameState.tx2NaCena3) this.vaso.setInteractive();
         chamaCena(this.vaso, this, 'CenaVaso');
 
+        // Globo
+        this.globo = this.add.image(172, 420, 'globo');
+        this.globo.setInteractive();
+        chamaCena(this.globo, this, 'CenaGlobo');
+
 
         this.input.on('pointerdown', ()=> {
             let mouseX = this.input.activePointer.x;

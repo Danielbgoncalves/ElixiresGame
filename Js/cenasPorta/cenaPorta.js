@@ -61,9 +61,10 @@ export default class CenaPorta extends Phaser.Scene{
         clickAnims(this);
 
         // Ítem pegável
-        /*this.carta1Fechada = new itens(this, 480, 270, 'carta1Fechada', 'carta1FechadaPeq');
-        if(this.gameState.itensColetados[this.carta1Fechada.id])
-            this.carta1Fechada.disableBody(true,true);*/
+        /*this.olho = new itens(this, 458, 350, 'olho', 'olho');
+        this.olho.setDepth(1);
+        if(this.gameState.itensColetados[this.olho.id])
+            this.olho.disableBody(true,true);*/
 
         
         // Setas

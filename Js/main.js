@@ -9,13 +9,15 @@ import CenaPlantaVerde from  './cenasPorta/cenaPlantaVerde.js'
 import CenaEstante from      './cenasEstante/cenaEstante.js';
 import CenaLivros from       './cenasEstante/cenaLivros.js';
 import CenaMesa1 from        './cenasEstante/cenaMesa1.js';
-import cenaDesafioFilho from './cenasEstante/desafioFilho.js';
+import cenaOlho from         './cenasEstante/cenaOlho.js';
 import CenaCaixa1 from       './cenasEstante/cenaCaixa1.js';
 import CenaRetrato from      './cenasEstante/cenaRetrato.js';
 import CenaPortinhas from    './cenasEstante/cenaPortinhas.js';
 
 
 import CenaEspelho from      './cenasEspelho/cenaEspelho.js';
+import cenaGlobo from        './cenasEspelho/cenaGlobo.js';
+import cenaDesafioFilho from './cenasEspelho/desafioFilho.js';
 import CenaEspelhoMesmo from './cenasEspelho/cenaEspelhoMesmo.js';
 import CenaMesa2 from        './cenasEspelho/cenaMesa2.js';
 import CenaSobreMesa2 from   './cenasEspelho/cenaSobreMesa2.js';
@@ -52,11 +54,13 @@ const config = {
         CenaEstante,
         CenaLivros,
         CenaMesa1,
+        cenaOlho,
         cenaDesafioFilho,
         CenaCaixa1,
         CenaRetrato,
         CenaPortinhas,
         CenaEspelho,
+        cenaGlobo,
         CenaEspelhoMesmo,
         CenaMesa2,
         CenaSobreMesa2,

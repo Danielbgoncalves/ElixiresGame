@@ -1,13 +1,10 @@
-import itens from "../itens.js";
 import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario, retiraDoInventario} from "../funcoesAuxiliares.js";
-
-export default class cenaMesa1 extends Phaser.Scene{
+export default class cenaGlobo extends Phaser.Scene{
     constructor(){
         super({
-            key: 'CenaMesa1'
+            key: 'CenaGlobo'
         });
-
-        this.aberta = false;
+        this.podeMostrarOlho = false;
     }
 
     init(data) {
@@ -18,17 +15,10 @@ export default class cenaMesa1 extends Phaser.Scene{
     preload(){}
 
     create(){
-        this.background = this.add.image(450, 275, 'cenaMesa1');
-        if(this.aberta) this.abrePortas();
+        this.cameras.main.fadeIn(400, 0, 0, 0);
+        this.background = this.add.image(450, 275, 'cenaGlobo');
 
-        // caixa1
-        this.caixa = this.add.image(532, 240, 'caixa1');
-        this.caixa.setInteractive();
-
-        // Objetos dela aberta
-        this.obj1 = this.add.image(530, 400,'objetos1');
-        this.obj1.setInteractive();
-        this.obj1.setVisible(false);
+        if(this.podeMostrarOlho)   this.add.image(398, 338, 'olho');
 
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -40,44 +30,48 @@ export default class cenaMesa1 extends Phaser.Scene{
         this.seta.setInteractive();
         this.seta.angle = 270;
 
-        chamaCena(this.seta, this, 'CenaEstante');
-        chamaCena(this.caixa, this, 'CenaCaixa1');
-        chamaCena(this.obj1, this, 'CenaOlho');
+        chamaCena(this.seta, this, 'CenaEspelho');
 
+        // Identifica cliques 
         this.input.on('pointerdown',() =>{
             let mouseX = this.input.activePointer.x;
             let mouseY = this.input.activePointer.y;
             let menorX = 809;
             let maiorX = 877;
+
+            console.log('x: ', mouseX, 'y: ', mouseY);
             
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
-        }); 
-
+        });
+        
     }
 
     verificaOndeClicou(mouseX, mouseY,menorX,maiorX){
 
         verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
-         if(mouseX > 136 && mouseY > 244 && mouseX < 768 && mouseY < 498 ) {
-            if(this.itemClicado == 'chaveMesa1'){
-                this.abrePortas();
+        if(mouseX > 365 && mouseY > 305 && mouseX < 430 && mouseY < 360 ) {
+            if(this.itemClicado == 'olhoPeq'){
+                this.colocaOlho();
             } 
+        }
+
+        if( this.podeMostrarOlho ){
+            this.scene.start('CenaDesafioFilho');
         }
     }
 
-    abrePortas(){
-        this.aberta = false;
-        retiraDoInventario(this, 'chaveMesa1');
-        this.background.setTexture('cenaMesa1Tx2');
+    colocaOlho(){
+        retiraDoInventario(this, 'olhoPeq');
+        this.seta.setVisible(false);
 
-        this.obj1.setVisible(true);
         
+        this.add.image(398, 338, 'olhoPeq');
+        
+        this.time.delayedCall(300, () =>{
+            this.podeMostrarOlho = true;
+        });
     }
 
-   
-    update(){
-
-    }
-
+    update(){}
 }
