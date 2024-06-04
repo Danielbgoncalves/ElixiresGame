@@ -38,8 +38,10 @@ export default class CenaPorta extends Phaser.Scene{
         //this.sys.game.music = this.sound.add('mainTheme');
         //this.sys.game.music.play({ loop: true });
 
-        let musica = this.sound.add('mainTheme', { volume: 1, loop: true });
-        musica.play();
+        this.musica = this.sound.add('mainTheme', { volume: 1, loop: true });
+
+        if(!this.musica.isPlaying)
+            this.musica.play();
 
 
         //setas

@@ -14,6 +14,7 @@ export default class cenaCaixa1 extends Phaser.Scene{
         this.inventario = data.inventario;
         this.gameState = data.gameState;
     }
+    
     preload(){}
 
     create(){

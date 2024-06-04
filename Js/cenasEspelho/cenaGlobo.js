@@ -1,4 +1,5 @@
 import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario, retiraDoInventario} from "../funcoesAuxiliares.js";
+
 export default class cenaGlobo extends Phaser.Scene{
     constructor(){
         super({
@@ -18,7 +19,11 @@ export default class cenaGlobo extends Phaser.Scene{
         this.cameras.main.fadeIn(400, 0, 0, 0);
         this.background = this.add.image(450, 275, 'cenaGlobo');
 
-        if(this.podeMostrarOlho)   this.add.image(398, 338, 'olho');
+        if(this.podeMostrarOlho) this.add.image(398, 338, 'olhoPeq');
+
+        // Música
+        let musica = this.scene.get('CenaPorta').musica;
+        if(!musica.isPlaying) musica.play();
 
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -57,7 +62,9 @@ export default class cenaGlobo extends Phaser.Scene{
         }
 
         if( this.podeMostrarOlho ){
-            this.scene.start('CenaDesafioFilho');
+            this.podeMostrarOlho = false;
+            this.itemClicado = 0;
+            this.scene.start('CenaDesafioFilho', {inventario: this.inventario, gameState: this.gameState});
         }
     }
 

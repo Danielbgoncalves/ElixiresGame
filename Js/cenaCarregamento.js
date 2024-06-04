@@ -222,7 +222,8 @@ export default class CenaCarregamento extends Phaser.Scene{
 
 
         // ------------------------- Musica -----------------------
-        this.load.audio('mainTheme', 'Assets/mainTheme.mp3')
+        this.load.audio('mainTheme', 'Assets/mainTheme.mp3');
+        this.load.audio('crowIntense', 'Assets/cenaEspelho/desafioFilho/crowIntense.mp3');
 
 
     }

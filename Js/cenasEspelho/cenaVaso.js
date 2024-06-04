@@ -52,7 +52,7 @@ export default class CenaVaso extends Phaser.Scene{
 
         verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
-        if(/*this.itemClicado === 'semente' && */mouseX > 173 && mouseY > 173 && mouseX < 592 && mouseY < 325){ // posicao onde a semente vai ser posta 
+        if(this.itemClicado === 'semente' && mouseX > 173 && mouseY > 173 && mouseX < 592 && mouseY < 325){ // posicao onde a semente vai ser posta 
             this.planta();
             this.mostraChave();
         }
@@ -63,10 +63,7 @@ export default class CenaVaso extends Phaser.Scene{
         retiraDoInventario(this, 'semente');
         this.add.image(400, 220, 'sementeEnterrada').setScale(0.7);
         this.estaPlantada =  true;
-        /*this.gameState.tx2NaCena3;
-        this.time.dellayedCall(600, () =>{
-            this.scene.start('cena3');
-        });*/
+   
     }
 
     mostraChave(){
@@ -74,9 +71,5 @@ export default class CenaVaso extends Phaser.Scene{
         if(this.gameState.itensColetados[this.chaveMesa1.id])
             this.chaveMesa1.disableBody(true,true);
     }
-
-    /* Essa chave é pra abrir porta da mesa1 da CenaEstante e la tem algo que abre a esfera da CenaEspelho 
-    que leva a CenaDesafioFilho */
-
 
 }

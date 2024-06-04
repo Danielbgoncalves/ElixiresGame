@@ -1,3 +1,4 @@
+import {inicializaIventarios, updateIventario, clickAnims } from "../funcoesAuxiliares.js";
 
 export default class cenaDesafioFilho extends Phaser.Scene{
     constructor(){
@@ -17,20 +18,27 @@ export default class cenaDesafioFilho extends Phaser.Scene{
         this.desafioFundo = this.add.image(450, 275, 'desafio-fundo');
         this.faseAtual = 0;
 
+        // Música
+        this.scene.get('CenaPorta').musica.stop();
+        this.musicaDaCena = this.sound.add('crowIntense', { volume: 1, loop: true });
+        this.musicaDaCena.play();
+
+        /*this.spritesInventario = [];
+        inicializaIventarios(this);
+        updateIventario(this);*/
+        clickAnims(this);
+
         // Cria personagens
         this.eldricPal = this.physics.add.image(55, 350, 'eldricPalito');
         this.eldricPal.setDepth(0.1);
+
         this.filho = this.physics.add.staticGroup();
-        this.filho.setDepth(0.1);
-        this.filho.create(750, 283, 'desafio-filho');
+        this.filho.create(750, 283, 'desafio-filho').setDepth(0.1); 
 
         // buraco de saida 
-        this.buraco = this.add.image(800, 400, 'desafio-burado');
-        this.buraco.setInteractive();
+        this.buraco = this.physics.add.image(70, 440, 'desafio-buraco');
+        this.buraco.setDepth(0.1);
         this.buraco.setVisible(false);
-        //chamaCena(this.buraco, this, 'CenaGlobo'); /* Boiei aqui kkkk era pra ser
-                                                  // quando o boneco entrasse nele nao quando clicasse */
-        
 
         // Cria o grupo de corpos que colidem
         this.grupo = this.physics.add.staticGroup();        
@@ -42,8 +50,13 @@ export default class cenaDesafioFilho extends Phaser.Scene{
         // Setas pra movimentação 
         this.setaDir = this.add.image(850, 450, 'desafio-seta').setInteractive();
         this.setaEsq = this.add.image(750, 450, 'desafio-seta').setInteractive();
-        this.setaCima = this.add.image(800, 400, 'desafio-seta').setInteractive();;
-        this.setaBaixo = this.add.image(800, 500, 'desafio-seta').setInteractive();;
+        this.setaCima = this.add.image(800, 400, 'desafio-seta').setInteractive();
+        this.setaBaixo = this.add.image(800, 500, 'desafio-seta').setInteractive();
+        this.setaDir.setDepth(0.1);
+        this.setaEsq.setDepth(0.1);
+        this.setaCima.setDepth(0.1);
+        this.setaBaixo.setDepth(0.1);
+
 
         this.setaDir.on('pointerdown', () => {this.movePlayer(50, 0)});
         this.setaEsq.on('pointerdown', () => {this.movePlayer(-50, 0)});
@@ -77,7 +90,6 @@ export default class cenaDesafioFilho extends Phaser.Scene{
     }
 
     novaFase(){
-        if(this.faseAtual === 7) this.faseFinal();
         this.faseAtual ++;
         this.eldricPal.x = 55;
         this.eldricPal.y = 350
@@ -113,18 +125,33 @@ export default class cenaDesafioFilho extends Phaser.Scene{
             this.grupo.create(245, 42,  'obstaculo');
             this.grupo.create(483, 443, 'obstaculo');            
         } else if(this.faseAtual === 7){
-            this.desafioFundo.setTexture('desafio-fundoTx2').setDepth(0.1);
-            this.add.image(750, 283, 'desafio-gaiola').setDepth(0.1);
+            this.faseFinal();
         }
     }
 
     faseFinal(){
-        this.add.image(750, 210, 'filhoFala');
+        this.desafioFundo.setTexture('desafio-fundoTx2').setDepth(0.1);
+        this.gaiolaD = this.physics.add.staticGroup();
+        //this.filho = this.physics.add.staticGroup();
+        this.gaiolaD.create(750, 270, 'desafio-gaiola').setDepth(0.1);
+        this.physics.add.collider(this.eldricPal, this.gaiolaD, this.mostraSaida, null, this);
+  
+    }
+
+    mostraSaida(){
+        this.add.image(750, 210, 'filhoFala').setDepth(0.1);
 
         this.time.delayedCall(1000, () => {
             this.buraco.setVisible(true);
+            this.portal = this.physics.add.image(70, 440, 'seta');
+            this.physics.add.collider(this.eldricPal, this.portal, this.chamaCena, null, this);
+
         });
-    
+    }
+
+    chamaCena(){
+        this.musicaDaCena.stop();
+        this.scene.start('CenaGlobo', {inventario: this.inventario, gameState: this.gameState});
     }
 
     upload(){}
