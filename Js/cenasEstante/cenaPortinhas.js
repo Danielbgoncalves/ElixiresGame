@@ -1,5 +1,5 @@
-import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario, retiraDoInventario} from "../funcoesAuxiliares.js";
 import itens from "../itens.js";
+import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario, retiraDoInventario} from "../funcoesAuxiliares.js";
 
 export default class CenaPortinhas extends Phaser.Scene{
     constructor(){
@@ -28,21 +28,6 @@ export default class CenaPortinhas extends Phaser.Scene{
 
         this.desenhaSimbolos();
 
-
-        /*this.zero = this.add.image(448, 253, 'simb0');
-        this.sezo.setVisible();
-        this.um = this.add.image(448, 253, 'simb1');
-        this.um.setVisible();
-        this.dois = this.add.image(448, 253, 'simb2');
-        this.dosi.setVisible();
-        this.tres = this.add.image(448, 253, 'simb3');
-        this.tres.setVisible();
-        this.qua = this.add.image(448, 253, 'simb4');
-        this.qua.setVisible();
-        this.cin = this.add.image(448, 253, 'simb5');
-        this.cin.setVisible();*/
-
-
         this.spritesInventario = [];
         inicializaIventarios(this);
         updateIventario(this);
@@ -57,7 +42,7 @@ export default class CenaPortinhas extends Phaser.Scene{
             let menorX = 809;
             let maiorX = 877;
 
-           // console.log('x: ', mouseX, 'y: ', mouseY);
+            -//console.log('x: ', mouseX, 'y: ', mouseY);
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
              
         });
@@ -75,11 +60,26 @@ export default class CenaPortinhas extends Phaser.Scene{
         verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
          if(mouseX > 398 && mouseY > 103 && mouseX < 616 && mouseY < 410 ) {
+            console.log('entrou no primeiro if')
+
             if(this.itemClicado === 'chaveQuadrada'){ // Muda o fundo dessa cena
                 retiraDoInventario(this, 'chaveQuadrada');
                 this.texturaDacena = 'cenaPortinhasTx2';
                 this.fundo.setTexture(this.texturaDacena);
                 this.iniciaPuzzle2();
+
+            } 
+        } else if(mouseX > 167 && mouseY > 103 && mouseX < 375 && mouseY < 410 ){
+            console.log('entrou no seg if')
+
+            if (this.itemClicado === 'chaveTriangularPeq'){
+                console.log('desenhou os itens')
+                this.itemClicado = 0;
+                retiraDoInventario(this, 'chaveTriangularPeq');
+                this.texturaDacena = 'cenaPortinhasTx3';
+                this.fundo.setTexture(this.texturaDacena);
+                this.mostraElixir();
+                this.mostraFaca();
             }
         }
     }
@@ -139,9 +139,18 @@ export default class CenaPortinhas extends Phaser.Scene{
             this.gameState.mostraSenhaDaVela = false;
         }
     }
-    
 
+    mostraElixir(){
+        this.elixirDaMente = new itens(this, 250, 345, 'elixirDaMente', 'elixirDaMentePeq');
+        if(this.gameState.itensColetados[this.elixirDaMente.id])
+            this.elixirDaMente.disableBody(true,true);
+    }
 
+    mostraFaca(){
+        this.faca = new itens(this, 280, 345, 'faca', 'facaPeq');
+        if(this.gameState.itensColetados[this.faca.id])
+            this.faca.disableBody(true,true);
+    }
 
     update(){}
 }

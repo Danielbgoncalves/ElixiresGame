@@ -1,3 +1,4 @@
+import itens from "../itens.js";
 import {inicializaIventarios, updateIventario, chamaCena, clickAnims, verificaCliqueNoInventario, retiraDoInventario} from "../funcoesAuxiliares.js";
 
 export default class cenaGlobo extends Phaser.Scene{
@@ -6,6 +7,7 @@ export default class cenaGlobo extends Phaser.Scene{
             key: 'CenaGlobo'
         });
         this.podeMostrarOlho = false;
+        this.voltouDoDesafio = true;
     }
 
     init(data) {
@@ -24,6 +26,8 @@ export default class cenaGlobo extends Phaser.Scene{
         // Música
         let musica = this.scene.get('CenaPorta').musica;
         if(!musica.isPlaying) musica.play();
+
+        if(this.voltouDoDesafio) this.mostraChave();
 
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -64,6 +68,7 @@ export default class cenaGlobo extends Phaser.Scene{
         if( this.podeMostrarOlho ){
             this.podeMostrarOlho = false;
             this.itemClicado = 0;
+            this.voltouDoDesafio = true;
             this.scene.start('CenaDesafioFilho', {inventario: this.inventario, gameState: this.gameState});
         }
     }
@@ -78,6 +83,12 @@ export default class cenaGlobo extends Phaser.Scene{
         this.time.delayedCall(300, () =>{
             this.podeMostrarOlho = true;
         });
+    }
+
+    mostraChave(){
+        this.chaveTriangular = new itens(this, 398, 338, 'chaveTriangular', 'chaveTriangularPeq');
+        if(this.gameState.itensColetados[this.chaveTriangular.id])
+            this.chaveTriangular.disableBody(true,true);
     }
 
     update(){}

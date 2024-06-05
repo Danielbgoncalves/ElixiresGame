@@ -8,6 +8,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         });
         this.oQueEldricSegura = 'nada'
         this.jaBebeu = false;
+        this.cabeçaAberta = false;
     }
 
 
@@ -78,19 +79,30 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
          if(mouseX > 79 && mouseY > 87 && mouseX < 640 && mouseY < 400 ) {
-            if(this.itemClicado === 'copoPeq')
-                this.mudaSprite(1);
-            else if(this.itemClicado === 'galhoPeq')
-                this.mudaSprite(2);
-            else if( this.itemClicado === 0 && this.oQueEldricSegura === 'cha')
-                this.mudaSprite(3);
-            else if( this.oQueEldricSegura === 'linha')
-                this.mudaSprite(4);
-            else if( this.oQueEldricSegura === 'linhaG'){
-                this.mudaSprite(0);
-                this.mostraSemente();
+            if(this.cabeçaAberta){
+                if(this.itemClicado === 'elixirDaMente')
+                    this.mudaSprite(8);
+
+            } else{
+                if(this.itemClicado === 'copoPeq')
+                    this.mudaSprite(1);
+                else if(this.itemClicado === 'galhoPeq')
+                    this.mudaSprite(2);
+                else if( this.itemClicado === 0 && this.oQueEldricSegura === 'cha')
+                    this.mudaSprite(3);
+                else if( this.oQueEldricSegura === 'linha')
+                    this.mudaSprite(4);
+                else if( this.oQueEldricSegura === 'linhaG'){
+                    this.mudaSprite(0);
+                    this.mostraSemente();
+                } else if(this.itemClicado === 'elixirDaMentePeq')
+                    this.mudaSprite(5);
+                else if (this.itemClicado === 'facaPeq')
+                    this.mudaSprite(6);
+                else if (this.itemClicado === 0 && this.oQueEldricSegura === 'faca')
+                    this.mudaSprite(7);
+                else this.eldricFala();
             }
-            else this.eldricFala();
         }
     }
 
@@ -146,6 +158,26 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             this.oQueEldricSegura = 'linhaG'; 
             this.itemClicado = 0;
 
+        } else if(id === 5){
+            this.eldric.setTexture('eldric-elixirDaMente');
+            this.oQueEldricSegura = 'elixirDaMente'; 
+            this.itemClicado = 0;
+
+        } else if(id === 6){
+            this.eldric.setTexture('eldric-faca');
+            this.oQueEldricSegura = 'faca'; 
+            this.itemClicado = 0;
+        } else if(id === 7){
+            retiraDoInventario(this, 'facaPeq');
+            this.efeito();
+            this.seta.setVisible(false);
+
+            this.eldric.setTexture('eldric-cerebro');
+            this.cabeçaAberta = true;
+            this.itemClicado = 0;
+        } else if(id === 8){
+            this.eldric.setTexture('eldric-cabecaElixirDaMente');
+            this.itemClicado = 0;
         }
         
     }
@@ -154,6 +186,20 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
         this.semente = new itens(this, 408, 250, 'sementeComLinha', 'semente');
         if(this.gameState.itensColetados[this.semente.id])
             this.semente.disableBody(true,true)
+    }
+
+    efeito(){
+        let glow = this.add.graphics({ fillStyle: { color: 0xffffff } });
+        glow.setDepth(1);
+        glow.fillRect(0, 0, 790, this.game.config.height);
+        glow.alpha = 0;
+
+        this.tweens.add({
+            targets: glow,
+            alpha: { from: 0, to: 0.5 },
+            yoyo: true,
+            duration: 500
+        });
     }
 
     update(){

@@ -100,6 +100,7 @@ export default class CenaCarregamento extends Phaser.Scene{
         // CenaPortinhas   
         this.load.image('cenaPortinhas','Assets/cenaEstante/cenaPortinhas.png');
         this.load.image('cenaPortinhasTx2','Assets/cenaEstante/cenaPortinhasTx2.png');
+        this.load.image('cenaPortinhasTx3','Assets/cenaEstante/cenaPortinhasTx3.png');
         this.load.image('simb0', 'Assets/cenaEstante/simb0.png');
         this.load.image('simb1', 'Assets/cenaEstante/simb1.png');
         this.load.image('simb2', 'Assets/cenaEstante/simb2.png');
@@ -107,6 +108,10 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('simb4', 'Assets/cenaEstante/simb4.png');
         this.load.image('simb5', 'Assets/cenaEstante/simb5.png');
         this.load.image('tesoura', 'Assets/cenaEstante/tesoura.png');
+        this.load.image('faca', 'Assets/cenaEstante/faca.png');
+        this.load.image('facaPeq', 'Assets/cenaEstante/facaPeq.png');
+        this.load.image('elixirDaMente', 'Assets/cenaEstante/elixirDaMente.png');
+        this.load.image('elixirDaMentePeq', 'Assets/cenaEstante/elixirDaMentePeq.png');
 
 
         // ----------------------CenaEspelho--------------------
@@ -119,6 +124,8 @@ export default class CenaCarregamento extends Phaser.Scene{
 
         // CenaGlobo
         this.load.image('cenaGlobo', 'Assets/cenaEspelho/cenaGlobo.png');
+        this.load.image('chaveTriangular', 'Assets/cenaEspelho/chaveTriangular.png');
+        this.load.image('chaveTriangularPeq', 'Assets/cenaEspelho/chaveTriangularPeq.png');
 
 
         // DesafioFilho
@@ -138,6 +145,10 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('eldric-linhaG', 'Assets/cenaEspelho/eldric-linhaG.png');
         this.load.image('eldric-seguraCopo', 'Assets/cenaEspelho/eldric-seguraCopo.png');
         this.load.image('eldric-seguraCha', 'Assets/cenaEspelho/eldric-seguraCha.png');
+        this.load.image('eldric-elixirDaMente', 'Assets/cenaEspelho/eldric-elixirDaMente.png');
+        this.load.image('eldric-cabecaElixirDaMente', 'Assets/cenaEspelho/eldric-cabecaElixirDaMente.png');
+        this.load.image('eldric-faca', 'Assets/cenaEspelho/eldric-faca.png');
+        this.load.image('eldric-cerebro', 'Assets/cenaEspelho/eldric-cerebro.png');
         this.load.image('cenaEspelhoMesmo', 'Assets/cenaEspelho/cenaEspelhoMesmo.png');
         this.load.image('espelho', 'Assets/cenaEspelho/espelho.png');
         this.load.image('escondeEldric', 'Assets/cenaEspelho/escondeEldric.png');
