@@ -11,7 +11,7 @@ export function chamaCena(objeto, cenaOrigem, cenaDestino){
 
 export function inicializaIventarios(cena) {
     for (let i = 0; i < 6; i++) {
-        let sprite = cena.physics.add.image(840, 80 + (i * 80), 'vazio').setDepth(1);
+        let sprite = cena.physics.add.image(840, 80 + (i * 75), 'vazio').setDepth(1);
         cena.spritesInventario[i] = sprite;
     }
 }
@@ -50,7 +50,11 @@ export function verificaCliqueNoInventario(cena, mouseX, mouseY, menorX, maiorX)
         else if (mouseY > 48 + 76*5 && mouseY < 116 + 76*5)
             cena.itemClicado = cena.inventario[5];
         else cena.itemClicado = 0;
+        
+        destaca(cena);
     }
+
+    
 }
 
 export function clickAnims(cena){
@@ -74,8 +78,28 @@ export function clickAnims(cena){
 }
 
 export function retiraDoInventario(cena, item){
-    let indexDaVela = cena.inventario.indexOf(item);
-        if(indexDaVela !== -1)
-            cena.inventario.splice(indexDaVela, 1);
+    let index = cena.inventario.indexOf(item);
+        if(index !== -1)
+            cena.inventario.splice(index, 1);
         updateIventario(cena);
+}
+
+export function destaca(cena){
+    if(cena.itemClicado === 0) return;
+    
+    let index = cena.inventario.indexOf(cena.itemClicado);
+    if(index !== -1){
+        let glow = cena.add.graphics({ fillStyle: { color: 0x5f694f} });
+        glow.setDepth(1);
+        glow.fillRect(810, 50 + (index * 76), 68, 68);
+        glow.alpha = 0;
+
+        cena.tweens.add({
+            targets: glow,
+            alpha: { from: 0, to: 0.5 },
+            yoyo: true,
+            duration: 500,
+        });
+    }
+    
 }

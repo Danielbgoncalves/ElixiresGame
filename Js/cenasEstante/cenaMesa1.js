@@ -50,6 +50,7 @@ export default class cenaMesa1 extends Phaser.Scene{
             let menorX = 809;
             let maiorX = 877;
             
+            //console.log(mouseX, mouseY);
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
         }); 
 
@@ -67,12 +68,25 @@ export default class cenaMesa1 extends Phaser.Scene{
     }
 
     abrePortas(){
+        this.itemClicado = 0;
         this.aberta = false;
         retiraDoInventario(this, 'chaveMesa1');
         this.background.setTexture('cenaMesa1Tx2');
 
         this.obj1.setVisible(true);
+
+        this.mostraVasoEFlor();
         
+    }
+
+    mostraVasoEFlor(){
+        this.vasilhaComAgua = new itens(this, 210, 405, 'vasilhaComAgua', 'vasilhaComAgua');
+        if(this.gameState.itensColetados[this.vasilhaComAgua.id])
+            this.vasilhaComAgua.disableBody(true,true);
+
+        this.flor = new itens(this, 250, 390, 'florPeq', 'florPeq');
+        if(this.gameState.itensColetados[this.flor.id])
+            this.flor.disableBody(true,true);
     }
 
    

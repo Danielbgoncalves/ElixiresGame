@@ -53,6 +53,8 @@ export default class CenaSobreMesa2 extends Phaser.Scene{
        
 
         this.paginaAtual = this.add.image(450,300, 'diario-0');
+
+      
                 
     }
 

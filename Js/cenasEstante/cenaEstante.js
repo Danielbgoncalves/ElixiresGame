@@ -34,6 +34,12 @@ export default class cenaEstante extends Phaser.Scene{
         this.livros = this.add.image(569, 317, 'livros');
         this.livros.setInteractive();
 
+        // Vaso de Flor
+        this.vasoDeFlor = this.add.image(555, 372, 'vasoVazio');
+        this.vasoDeFlor.setInteractive();
+        this.vasoDeFlor.setScale(0.22);
+        
+
         // Mesinha 
         this.mesa = this.add.image(195,393, 'mesa1');
         this.mesa.setInteractive();
@@ -41,7 +47,6 @@ export default class cenaEstante extends Phaser.Scene{
         // Portinhas
         this.portinhas = this.add.image(580,440, 'portinhas');
         this.portinhas.setInteractive();
-
         
         this.spritesInventario = [];
         inicializaIventarios(this);
@@ -64,25 +69,14 @@ export default class cenaEstante extends Phaser.Scene{
         // Clique nos livros
         chamaCena(this.livros, this,'CenaLivros');
 
+        // Clique no vaso
+        chamaCena(this.vasoDeFlor, this, 'CenaFlor');
+
         // Clique nas portinhas
         chamaCena(this.portinhas, this,'CenaPortinhas');
 
-    }
+        
 
-    inicializaIventarios() {
-        for (let i = 0; i < 6; i++) {
-            let sprite = this.physics.add.image(835, 80 + (i * 80), 'seta').setDepth(1);
-            this.spritesInventario[i] = sprite;
-        }
-    }
-
-    updateIventario() {
-        for (let i = 0; i < 6; i++) {
-            if (this.inventario[i])
-                this.spritesInventario[i].setTexture(this.inventario[i]);
-            else 
-                this.spritesInventario[i].setTexture('seta');
-        }
     }
 
     update(){

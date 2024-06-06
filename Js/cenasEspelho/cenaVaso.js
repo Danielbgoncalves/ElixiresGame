@@ -56,7 +56,6 @@ export default class CenaVaso extends Phaser.Scene{
             this.planta();
             this.mostraChave();
         }
-
     }
 
     planta(){

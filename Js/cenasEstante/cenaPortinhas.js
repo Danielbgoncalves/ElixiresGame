@@ -42,7 +42,7 @@ export default class CenaPortinhas extends Phaser.Scene{
             let menorX = 809;
             let maiorX = 877;
 
-            -//console.log('x: ', mouseX, 'y: ', mouseY);
+            //console.log('x: ', mouseX, 'y: ', mouseY);
             this.verificaOndeClicou(mouseX, mouseY,menorX,maiorX);
              
         });

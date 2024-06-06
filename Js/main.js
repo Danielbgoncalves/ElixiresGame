@@ -8,6 +8,7 @@ import CenaPlantaVerde from  './cenasPorta/cenaPlantaVerde.js'
 
 import CenaEstante from      './cenasEstante/cenaEstante.js';
 import CenaLivros from       './cenasEstante/cenaLivros.js';
+import cenaFlor from         './cenasEstante/cenaFlor.js';
 import CenaMesa1 from        './cenasEstante/cenaMesa1.js';
 import cenaOlho from         './cenasEstante/cenaOlho.js';
 import CenaCaixa1 from       './cenasEstante/cenaCaixa1.js';
@@ -53,6 +54,7 @@ const config = {
         CenaPlantaVerde,
         CenaEstante,
         CenaLivros,
+        cenaFlor,
         CenaMesa1,
         cenaOlho,
         cenaDesafioFilho,

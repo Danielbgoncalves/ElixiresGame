@@ -56,13 +56,20 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('mesa1', 'Assets/cenaEstante/mesa1.png');
         this.load.image('caixa1', 'Assets/cenaEstante/caixa1.png');
         this.load.image('livros', 'Assets/cenaEstante/livros.png');
-        this.load.image('portinhas','Assets/cenaEstante/portinhas.png' );
+        this.load.image('portinhas','Assets/cenaEstante/portinhas.png');
         
 
         // CenaMesa1
         this.load.image('cenaMesa1', 'Assets/cenaEstante/cenaMesa1.png');
         this.load.image('cenaMesa1Tx2', 'Assets/cenaEstante/cenaMesa1Tx2.png');
         this.load.image('objetos1', 'Assets/cenaEstante/objetos1.png');
+        this.load.image('flor', 'Assets/cenaEstante/flor.png');
+        this.load.image('florPeq', 'Assets/cenaEstante/florPeq.png');
+        this.load.image('vasoVazio', 'Assets/cenaEstante/vasoVazio.png');
+        this.load.image('vasoComAgua', 'Assets/cenaEstante/vasoComAgua.png');
+        this.load.image('vasilhaComAgua', 'Assets/cenaEstante/vasilhaComAgua.png');
+
+
 
         // CenaOlho
         this.load.image('cenaOlho', 'Assets/cenaEstante/cenaOlho.png');
@@ -96,6 +103,10 @@ export default class CenaCarregamento extends Phaser.Scene{
         this.load.image('livro5','Assets/cenaEstante/livro5.png' );
         this.load.image('oUltElixir-dorso', 'Assets/cenaEstante/oUltElixir-dorso.png');
         this.load.image('oUltElixir-dorsoPeq', 'Assets/cenaEstante/oUltElixir-dorsoPeq.png');
+
+        //CenaFlor
+        this.load.image('cenaFlor','Assets/cenaEstante/cenaFlor.png' );
+
 
         // CenaPortinhas   
         this.load.image('cenaPortinhas','Assets/cenaEstante/cenaPortinhas.png');

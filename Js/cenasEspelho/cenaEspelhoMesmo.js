@@ -176,7 +176,7 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             this.cabeçaAberta = true;
             this.itemClicado = 0;
         } else if(id === 8){
-            this.eldric.setTexture('eldric-cabecaElixirDaMente');
+            this.eldric.setTexture('eldric-cabecaElixirDaMente');eldric-cabegaElixirDaMente
             this.itemClicado = 0;
         }
         
@@ -200,6 +200,13 @@ export default class CenaEspelhoMesmo extends Phaser.Scene{
             yoyo: true,
             duration: 500
         });
+
+        /*
+        
+            Ao tomar o novo elixir o cenario deve ganhar mais coisas talvez mudar de cores e aproximar 
+            do fim do jogo
+
+        */
     }
 
     update(){

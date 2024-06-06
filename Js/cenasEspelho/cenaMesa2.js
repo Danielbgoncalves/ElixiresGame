@@ -59,7 +59,7 @@ export default class CenaMesa2 extends Phaser.Scene{
                 this.scene.start('CenaSobreMesa2', {inventario: this.inventario, gameState: this.gameState});
 
             if(mouseX > menorX && mouseX < maiorX)
-                verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX)
+                verificaCliqueNoInventario(this, mouseX, mouseY, menorX, maiorX);
 
         });
 
